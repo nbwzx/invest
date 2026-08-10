@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Investment Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { padding: 20px; background: #f5f7fa; }
+    .container { max-width: 1400px; }
+    .table-container { border: 1px solid #dee2e6; border-radius: 0.5rem; background: white; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .table-responsive { max-height: 80vh; overflow-y: auto; }
+    #fund-table { font-size: 0.85rem; margin-bottom: 0; width: 100%; border-collapse: separate; border-spacing: 0; }
+    #fund-table th, #fund-table td { padding: 0.4rem 0.3rem; vertical-align: middle; white-space: nowrap; text-align: center; }
+    #fund-table th:first-child, #fund-table td:first-child { width: 40px; min-width: 40px; max-width: 40px; }
+    #fund-table th:nth-child(2), #fund-table td:nth-child(2) { width: 80px; min-width: 80px; max-width: 80px; }
+    #fund-table .fund-name { min-width: 100px; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    thead th { position: sticky; top: 0; z-index: 30; background: #f8f9fa !important; border-bottom: 3px solid #adb5bd !important; box-shadow: 0 2px 4px rgba(0,0,0,0.06); cursor: pointer; user-select: none; font-weight: 600; font-size: 0.75rem; }
+    thead th:hover { background: #e9ecef !important; }
+    tfoot td { position: sticky; bottom: 0; z-index: 25; background: #e9ecef !important; font-weight: 600; border-top: 3px solid #adb5bd !important; box-shadow: 0 -2px 4px rgba(0,0,0,0.06); font-size: 0.8rem; }
+    #fund-table td:first-child, #fund-table th:first-child { position: sticky; left: 0; z-index: 11; background-color: #ffffff; }
+    #fund-table thead th:first-child { background-color: #f8f9fa !important; z-index: 31; }
+    #fund-table tfoot td:first-child { background-color: #e9ecef !important; z-index: 26; }
+    #fund-table tbody tr.table-light td:first-child { background-color: #f8f9fa; }
+    #fund-table td:nth-child(2), #fund-table th:nth-child(2) { position: sticky; left: 40px; z-index: 12; background-color: #ffffff; box-shadow: 2px 0 6px rgba(0,0,0,0.08); }
+    #fund-table thead th:nth-child(2) { background-color: #f8f9fa !important; z-index: 32; }
+    #fund-table tfoot td:nth-child(2) { background-color: #e9ecef !important; z-index: 27; }
+    #fund-table tbody tr.table-light td:nth-child(2) { background-color: #f8f9fa; }
+    .sort-arrow { display: inline-block; width: 16px; font-size: 0.65rem; color: #6c757d; margin-left: 2px; }
+    .money-input { width: 60px; border: 1px solid #ced4da; border-radius: 4px; padding: 2px 2px; text-align: center; font-size: 0.8rem; background: transparent; transition: 0.15s; }
+    .money-input:focus { outline: 2px solid #0d6efd; background: white; }
+    .money-input.exceeds-limit { background: #ffcccc !important; border-color: #dc3545 !important; color: #721c24 !important; }
+    .positive { color: #dc3545 !important; font-weight: 600; }
+    .negative { color: #28a745 !important; font-weight: 600; }
+    .footer-label { font-size: 0.75rem; }
+    @media (max-width: 576px) {
+      #fund-table { font-size: 0.7rem; }
+      #fund-table th, #fund-table td { padding: 0.25rem 0.15rem; }
+      #fund-table th:first-child, #fund-table td:first-child { width: 32px; min-width: 32px; max-width: 32px; }
+      #fund-table th:nth-child(2), #fund-table td:nth-child(2) { width: 68px; min-width: 68px; max-width: 68px; left: 32px; }
+      #fund-table .fund-name { min-width: 60px; max-width: 100px; }
+      .money-input { width: 48px; font-size: 0.7rem; }
+    }
+    .chart-container { height: 65vh; width: 100%; margin-top: 20px; position: relative; }
+    .param-group { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .param-group label { margin-right: 6px; font-weight: 500; min-width: 80px; }
+    .param-group input { width: 100px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; }
+    .param-group input[type="date"] { width: 150px; }
+    .param-group .btn { margin-left: 12px; }
+    .status { font-size: 0.9rem; color: #6c757d; margin-top: 8px; }
+    #statusMsg { font-weight: 500; }
+    #statusMsg.success { color: #28a745; }
+    #statusMsg.error { color: #dc3545; }
+    .legend-note { font-size: 0.9rem; color: #495057; margin-top: 6px; }
+    .legend-note .swatch { display: inline-block; width: 20px; height: 20px; border-radius: 4px; vertical-align: middle; margin-right: 4px; }
+    .swatch.green { background: rgba(0, 200, 0, 0.2); border: 1px solid rgba(0,200,0,0.5); }
+    .swatch.red { background: rgba(255, 0, 0, 0.2); border: 1px solid rgba(255,0,0,0.5); }
+
+    @media (max-width: 768px) {
+      .chart-container { height: 40vh; }
+      .param-group label { font-size: 0.85rem; min-width: 60px; }
+      .param-group input { font-size: 0.8rem; padding: 6px 4px; }
+      .param-group input[type="date"] { width: 120px; }
+      .param-group .btn { font-size: 0.8rem; padding: 6px 12px; }
+      .legend-note { font-size: 0.75rem; }
+      #statusMsg { font-size: 0.75rem; }
+    }
+    @media (max-width: 576px) {
+      .param-group { flex-direction: column; align-items: stretch; }
+      .param-group input, .param-group input[type="date"] { width: 100%; }
+      .param-group .btn { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="mt-2">📊 Investment Dashboard</h1>
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="qqq-tab" data-bs-toggle="tab" data-bs-target="#qqq-pane" type="button" role="tab" aria-controls="qqq-pane" aria-selected="true">QQQ Trend</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="fund-tab" data-bs-toggle="tab" data-bs-target="#fund-pane" type="button" role="tab" aria-controls="fund-pane" aria-selected="false">Fund Performance</button>
+    </li>
+  </ul>
+
+  <div class="tab-content pt-3">
+    <!-- QQQ Tab -->
+    <div class="tab-pane fade show active" id="qqq-pane" role="tabpanel" aria-labelledby="qqq-tab">
+      <p class="text-muted">Buy when PE crosses below lower band (−10%), sell when PE crosses above upper band (+10%).</p>
+
+      <div class="card">
+        <div class="card-header">⚙️ Parameters</div>
+        <div class="card-body">
+          <div class="param-group">
+            <label>Initial Capital ($)</label>
+            <input type="number" id="initCapital" step="100" value="10000" />
+            <label>Start Date</label>
+            <input type="date" id="startDate" />
+            <label>End Date</label>
+            <input type="date" id="endDate" />
+            <label>Threshold (%)</label>
+            <input type="number" id="threshold" step="0.5" value="10" />
+            <button class="btn btn-primary" id="runBtn">▶ Update</button>
+          </div>
+          <div class="mt-2">
+            <span id="statusMsg" class="status">Data loaded: <span id="dataCount">0</span> rows</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">📊 Summary</div>
+            <div class="card-body table-container" style="max-height: 30vh;">
+              <table class="table table-striped table-bordered" id="summary-table">
+                <thead>
+                  <tr>
+                    <th>Strategy</th>
+                    <th>Final Value ($)</th>
+                    <th>Annual Return</th>
+                    <th>Max Drawdown</th>
+                  </tr>
+                </thead>
+                <tbody id="qqq-table-body">
+                  <tr><td colspan="4" class="text-center">Run simulation</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">📋 Parameters Used</div>
+            <ul class="list-group list-group-flush" id="params-list">
+              <li class="list-group-item">No simulation run yet</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="returnsChart"></canvas>
+      </div>
+      <div class="legend-note">
+        <span class="swatch green"></span> PE <span class="fw-bold">below</span> lower band → <strong>Buy Zone</strong> &nbsp;&nbsp;&nbsp;
+        <span class="swatch red"></span> PE <span class="fw-bold">above</span> upper band → <strong>Sell Zone</strong>
+      </div>
+    </div>
+
+    <!-- Fund Tab -->
+    <div class="tab-pane fade" id="fund-pane" role="tabpanel" aria-labelledby="fund-tab">
+      <div class="d-flex justify-content-end mb-2">
+        <button class="btn btn-sm btn-outline-secondary reset-btn" id="resetSort">↺ Reset Order</button>
+      </div>
+      <div class="table-container">
+        <div class="table-responsive">
+          <table class="table table-hover table-sm mb-0" id="fund-table">
+            <thead>
+              <tr>
+                <th data-sort-key="index">#<span class="sort-arrow"></span></th>
+                <th data-sort-key="Code">Code<span class="sort-arrow"></span></th>
+                <th data-sort-key="Name">Name<span class="sort-arrow"></span></th>
+                <th data-sort-key="Money">Money<span class="sort-arrow"></span></th>
+                <th data-sort-key="Limit">Limit<span class="sort-arrow"></span></th>
+                <th data-sort-key="Fee">Fee<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_Return">1M<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_Return">3M<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_Return">6M<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_Return">1Y<span class="sort-arrow"></span></th>
+                <th data-sort-key="TotalScore">Score<span class="sort-arrow"></span></th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr><td colspan="11" class="text-center py-3">Loading…</td></tr>
+            </tbody>
+            <tfoot id="table-footer"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ============================================================ -->
+<!-- JavaScript: QQQ Chart                                         -->
+<!-- ============================================================ -->
+<script>
+  (function() {
+    "use strict";
+
+    const runBtn = document.getElementById('runBtn');
+    const qqqTbody = document.getElementById('qqq-table-body');
+    const paramsList = document.getElementById('params-list');
+    const ctx = document.getElementById('returnsChart').getContext('2d');
+    const dataCountSpan = document.getElementById('dataCount');
+    const statusMsg = document.getElementById('statusMsg');
+
+    let rawData = null;
+    let chartInstance = null;
+    let defaultParams = {};
+
+    // ---- Global linear fit (on full dataset) ----
+    let globalCoeffs = null;      // [a, b] for y = a + b*x
+    let globalStartDate = null;   // Date object of the first data point
+
+    function setStatus(msg, type = 'info') {
+      statusMsg.textContent = msg;
+      statusMsg.className = 'status';
+      if (type === 'success') statusMsg.classList.add('success');
+      if (type === 'error') statusMsg.classList.add('error');
+      console.log('[Status]', msg);
+    }
+
+    function formatPercent(val) {
+      if (val === null || val === undefined || isNaN(val)) return '—';
+      return (val * 100).toFixed(2) + '%';
+    }
+    function formatCurrency(val) {
+      if (val === null || val === undefined || isNaN(val)) return '—';
+      return val.toFixed(2);
+    }
+    function formatDate(d) {
+      return d.toISOString().slice(0,10);
+    }
+
+    function computeMaxDrawdown(values) {
+      let peak = values[0];
+      let maxDD = 0;
+      for (const v of values) {
+        if (v > peak) peak = v;
+        const dd = (peak - v) / peak;
+        if (dd > maxDD) maxDD = dd;
+      }
+      return maxDD;
+    }
+
+    function getIntervals(condition) {
+      const intervals = [];
+      let inInterval = false;
+      let start = 0;
+      for (let i = 0; i < condition.length; i++) {
+        if (condition[i] && !inInterval) {
+          inInterval = true;
+          start = i;
+        } else if (!condition[i] && inInterval) {
+          inInterval = false;
+          intervals.push([start, i - 1]);
+        }
+      }
+      if (inInterval) {
+        intervals.push([start, condition.length - 1]);
+      }
+      return intervals;
+    }
+
+    function linearFit(x, y) {
+      const n = x.length;
+      let sumX = 0, sumY = 0, sumXX = 0, sumXY = 0;
+      for (let i = 0; i < n; i++) {
+        sumX += x[i];
+        sumY += y[i];
+        sumXX += x[i] * x[i];
+        sumXY += x[i] * y[i];
+      }
+      const det = n * sumXX - sumX * sumX;
+      let a, b;
+      if (Math.abs(det) < 1e-12) {
+        a = 0; b = 0;
+      } else {
+        a = (sumXX * sumY - sumX * sumXY) / det;
+        b = (n * sumXY - sumX * sumY) / det;
+      }
+      return { coeffs: [a, b] };
+    }
+
+    // ---- Load data, fit global trend ----
+    async function loadData() {
+      try {
+        setStatus('Loading data...', 'info');
+        const resp = await fetch('qqq_pe_data.json');
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const json = await resp.json();
+        rawData = json.data.map(d => ({
+          Date: new Date(d.Date),
+          Close: parseFloat(d.Close),
+          PE: parseFloat(d.PE)
+        }));
+        defaultParams = json.default_parameters;
+        dataCountSpan.textContent = rawData.length;
+        setStatus(`Data loaded: ${rawData.length} rows`, 'success');
+
+        // Fit on all data with valid PE
+        const valid = rawData.filter(r => !isNaN(r.PE));
+        if (valid.length === 0) throw new Error('No valid PE data');
+        globalStartDate = valid[0].Date;
+        const x = valid.map(r => (r.Date - globalStartDate) / (24 * 60 * 60 * 1000));
+        const y = valid.map(r => r.PE);
+        const { coeffs } = linearFit(x, y);
+        globalCoeffs = coeffs;
+        console.log('Global linear fit:', globalCoeffs);
+
+        // Pre-fill controls
+        document.getElementById('initCapital').value = defaultParams.initial_capital || 10000;
+        document.getElementById('threshold').value = 10;
+        const today = new Date();
+        const threeYearsAgo = new Date(today);
+        threeYearsAgo.setFullYear(today.getFullYear() - 3);
+        document.getElementById('startDate').value = threeYearsAgo.toISOString().slice(0,10);
+        document.getElementById('endDate').value = today.toISOString().slice(0,10);
+
+        setTimeout(runSimulation, 100);
+      } catch (err) {
+        console.error('Error loading data:', err);
+        setStatus('❌ Failed to load data: ' + err.message, 'error');
+        alert('Could not load qqq_pe_data.json. Make sure the file is in the same folder.');
+      }
+    }
+
+    // ---- Simulation using global trend ----
+    function simulateBuyAndHold(data, params) {
+      const { initCapital, threshold } = params;
+
+      const valid = data.filter(r => r.PE !== null && r.PE !== undefined && !isNaN(r.PE));
+      if (valid.length === 0) throw new Error('No valid PE data in selected date range');
+
+      const startDate = valid[0].Date;
+      const endDate = valid[valid.length - 1].Date;
+      const firstClose = valid[0].Close;
+
+      // Compute fitted PE using global coefficients
+      const fittedPE = valid.map(r => {
+        const days = (r.Date - globalStartDate) / (24 * 60 * 60 * 1000);
+        return globalCoeffs[0] + globalCoeffs[1] * days;
+      });
+
+      // Bands for shading
+      const upperBand = fittedPE.map(v => v * (1 + threshold / 100));
+      const lowerBand = fittedPE.map(v => v * (1 - threshold / 100));
+
+      const peVals = valid.map(r => r.PE);
+      const buyCondition = peVals.map((pe, i) => pe < lowerBand[i]);
+      const sellCondition = peVals.map((pe, i) => pe > upperBand[i]);
+      const buyIntervals = getIntervals(buyCondition);
+      const sellIntervals = getIntervals(sellCondition);
+
+      const returns = valid.map(row => row.Close / firstClose - 1);
+      const finalValue = initCapital * (valid[valid.length - 1].Close / firstClose);
+      const maxDD = computeMaxDrawdown(valid.map(r => r.Close));
+      const years = (endDate - startDate) / (365.25 * 24 * 60 * 60 * 1000);
+      const annReturn = years > 0 ? Math.pow(finalValue / initCapital, 1 / years) - 1 : NaN;
+
+      const result = {
+        name: 'Nasdaq Buy & Hold',
+        finalValue: finalValue,
+        annualReturn: annReturn,
+        maxDrawdown: maxDD,
+        dates: valid.map(r => r.Date),
+        returns: returns
+      };
+
+      return {
+        result: result,
+        peData: valid.map(r => ({ Date: r.Date, PE: r.PE })),
+        fittedPE: fittedPE,
+        coeffs: globalCoeffs,
+        buyIntervals: buyIntervals,
+        sellIntervals: sellIntervals,
+        params: { initCapital, threshold, startDate, endDate }
+      };
+    }
+
+    // ---- Shading plugin ----
+    const shadingPlugin = {
+      id: 'shadingPlugin',
+      intervals: { buy: [], sell: [] },
+
+      afterDraw(chart) {
+        const { ctx, scales, chartArea } = chart;
+        const { top, bottom, left, right } = chartArea;
+        const xScale = scales.x;
+        const yScale = scales.y1;
+        if (!yScale) return;
+
+        const drawBoxes = (intervals, color) => {
+          intervals.forEach(([startIdx, endIdx]) => {
+            const x1 = xScale.getPixelForValue(startIdx);
+            const x2 = xScale.getPixelForValue(endIdx);
+            const drawLeft = Math.max(left, Math.min(x1, right));
+            const drawRight = Math.max(left, Math.min(x2, right));
+            if (drawRight <= drawLeft) return;
+            const yMinPx = yScale.getPixelForValue(yScale.max);
+            const yMaxPx = yScale.getPixelForValue(yScale.min);
+            const drawTop = Math.max(top, Math.min(yMinPx, bottom));
+            const drawBottom = Math.max(top, Math.min(yMaxPx, bottom));
+            ctx.save();
+            ctx.fillStyle = color;
+            ctx.fillRect(drawLeft, drawTop, drawRight - drawLeft, drawBottom - drawTop);
+            ctx.restore();
+          });
+        };
+
+        drawBoxes(this.intervals.buy, 'rgba(0, 200, 0, 0.2)');
+        drawBoxes(this.intervals.sell, 'rgba(255, 0, 0, 0.2)');
+      }
+    };
+
+    // ---- Render results ----
+    function renderResults(simData) {
+      const { result, peData, fittedPE, coeffs, buyIntervals, sellIntervals, params } = simData;
+
+      qqqTbody.innerHTML = '';
+      const ann = result.annualReturn;
+      const annCls = (ann !== null && !isNaN(ann)) ? (ann > 0 ? 'positive' : (ann < 0 ? 'negative' : '')) : '';
+      const ddCls = result.maxDrawdown > 0 ? 'negative' : '';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${result.name}</td>
+        <td>${formatCurrency(result.finalValue)}</td>
+        <td class="${annCls}">${formatPercent(ann)}</td>
+        <td class="${ddCls}">${formatPercent(result.maxDrawdown)}</td>
+      `;
+      qqqTbody.appendChild(tr);
+
+      const coeffStr = coeffs.map(c => c.toFixed(4)).join(', ');
+      paramsList.innerHTML = `
+        <li class="list-group-item">Initial Capital: $${params.initCapital}</li>
+        <li class="list-group-item">Threshold: ${params.threshold}%</li>
+        <li class="list-group-item">Date Range: ${formatDate(params.startDate)} – ${formatDate(params.endDate)}</li>
+        <li class="list-group-item">Global linear coefficients: a=${coeffs[0].toFixed(4)}, b=${coeffs[1].toFixed(4)}</li>
+        <li class="list-group-item">Buy zones: ${buyIntervals.length}, Sell zones: ${sellIntervals.length}</li>
+      `;
+
+      if (chartInstance) {
+        chartInstance.destroy();
+        chartInstance = null;
+      }
+
+      const labels = result.dates.map(d => formatDate(d));
+      const peValues = peData.map(d => d.PE);
+
+      shadingPlugin.intervals.buy = buyIntervals;
+      shadingPlugin.intervals.sell = sellIntervals;
+
+      if (!Chart.registry.plugins.get('shadingPlugin')) {
+        Chart.register(shadingPlugin);
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: result.name,
+              data: result.returns,
+              borderColor: '#2c3e50',
+              backgroundColor: 'transparent',
+              borderWidth: 3,
+              tension: 0.1,
+              pointRadius: 0,
+              fill: false,
+              yAxisID: 'y'
+            },
+            {
+              label: 'PE Ratio',
+              data: peValues,
+              borderColor: 'rgba(0, 0, 255, 0.4)',
+              backgroundColor: 'transparent',
+              borderWidth: 1,
+              pointRadius: 0,
+              fill: false,
+              yAxisID: 'y1',
+              tension: 0.1
+            },
+            {
+              label: 'Fitted PE (Global Linear)',
+              data: fittedPE,
+              borderColor: 'rgba(255, 165, 0, 0.5)',
+              backgroundColor: 'transparent',
+              borderWidth: 1,
+              borderDash: [4, 4],
+              pointRadius: 0,
+              fill: false,
+              yAxisID: 'y1',
+              tension: 0.1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.dataset.label || '';
+                  let val = context.parsed.y;
+                  if (context.dataset.yAxisID === 'y1') {
+                    return label + ': ' + val.toFixed(2);
+                  } else {
+                    return label + ': ' + (val * 100).toFixed(2) + '%';
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'category',
+              labels: labels,
+              ticks: { maxTicksLimit: 20 }
+            },
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              ticks: { callback: v => (v * 100).toFixed(0) + '%' },
+              title: { display: true, text: 'Cumulative Return' }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              grid: { drawOnChartArea: false },
+              ticks: { callback: v => v.toFixed(1) },
+              title: { display: true, text: 'PE Ratio' }
+            }
+          }
+        },
+        plugins: [shadingPlugin]
+      });
+    }
+
+    // ---- Run ----
+    function runSimulation() {
+      try {
+        setStatus('Running simulation...', 'info');
+        if (!rawData || !globalCoeffs) {
+          setStatus('❌ Data not ready', 'error');
+          alert('Data not loaded yet. Please wait or reload.');
+          return;
+        }
+
+        const initCapital = parseFloat(document.getElementById('initCapital').value) || 10000;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const threshold = parseFloat(document.getElementById('threshold').value) || 10;
+
+        if (!startDate || !endDate) {
+          setStatus('❌ Please select start and end dates', 'error');
+          alert('Please select both start and end dates.');
+          return;
+        }
+
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+          setStatus('❌ Invalid date format', 'error');
+          alert('Invalid date format.');
+          return;
+        }
+
+        let filtered = rawData.filter(d => d.Date >= start && d.Date <= end);
+        if (filtered.length === 0) {
+          setStatus('❌ No data in selected date range', 'error');
+          alert('No data in selected date range. Please adjust dates.');
+          return;
+        }
+
+        const params = { initCapital, threshold };
+        const simResult = simulateBuyAndHold(filtered, params);
+        renderResults(simResult);
+        setStatus(`✅ Done – ${filtered.length} days`, 'success');
+      } catch (err) {
+        console.error('Simulation error:', err);
+        setStatus('❌ Error: ' + err.message, 'error');
+        alert('Error in simulation: ' + err.message);
+      }
+    }
+
+    // ---- Tab shown event ----
+    document.getElementById('qqq-tab').addEventListener('shown.bs.tab', function() {
+      if (chartInstance) {
+        chartInstance.resize();
+      } else if (!rawData) {
+        loadData();
+      } else {
+        runSimulation();
+      }
+    });
+
+    // ---- Initial load ----
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadData);
+    } else {
+      loadData();
+    }
+
+    runBtn.addEventListener('click', runSimulation);
+  })();
+</script>
+
+<!-- ============================================================ -->
+<!-- JavaScript: Fund Dashboard                                    -->
+<!-- ============================================================ -->
+<script>
+  (function() {
+    "use strict";
+
+    const tbody = document.getElementById('table-body');
+    const tfoot = document.getElementById('table-footer');
+    const resetBtn = document.getElementById('resetSort');
+
+    let rawData = [];
+    let currentData = [];
+    let sortState = { key: null, direction: 'none' };
+
+    const getNumeric = val => (val !== null && val !== undefined && !isNaN(Number(val))) ? Number(val) : null;
+    const fmtPct = val => (getNumeric(val) !== null) ? (Number(val) * 100).toFixed(2) + '%' : '—';
+    const fmtNum = (val, d=2) => (getNumeric(val) !== null) ? Number(val).toFixed(d) : '—';
+
+    const colorColumns = ['1M_Return','3M_Return','6M_Return','1Y_Return','TotalScore'];
+    const colorClass = (key, val) => {
+      if (!colorColumns.includes(key)) return '';
+      const num = getNumeric(val);
+      if (num === null) return '';
+      return num > 0 ? 'positive' : (num < 0 ? 'negative' : '');
+    };
+
+    function checkLimit(input, limit) {
+      const val = parseFloat(input.value);
+      if (!isNaN(val) && limit !== null && limit !== undefined && !isNaN(limit) && val > limit) {
+        input.classList.add('exceeds-limit');
+      } else {
+        input.classList.remove('exceeds-limit');
+      }
+    }
+
+    function renderTable(data) {
+      if (!data || data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="11" class="text-center">No data available</td></tr>`;
+        tfoot.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      data.forEach((item, idx) => {
+        const moneyVal = (item.Money !== null && item.Money !== undefined) ? item.Money : '';
+        const limit = item.Limit;
+        const limitDisplay = (limit !== null && limit !== undefined) ? limit : '—';
+        const feeDisplay = (item.Fee !== null && item.Fee !== undefined) ? item.Fee : '—';
+        const rowClass = (idx % 2 === 0) ? '' : 'table-light';
+        html += `<tr class="${rowClass}">
+          <td>${idx + 1}</td>
+          <td>${item.Code || ''}</td>
+          <td class="fund-name" title="${item.Name || ''}">${item.Name || ''}</td>
+          <td>
+            <input type="number" step="1" min="0" class="money-input" value="${moneyVal}"
+                   data-index="${idx}" data-limit="${(limit !== null && limit !== undefined) ? limit : ''}">
+          </td>
+          <td>${limitDisplay}</td>
+          <td>${feeDisplay}</td>
+          <td class="${colorClass('1M_Return', item['1M_Return'])}">${fmtPct(item['1M_Return'])}</td>
+          <td class="${colorClass('3M_Return', item['3M_Return'])}">${fmtPct(item['3M_Return'])}</td>
+          <td class="${colorClass('6M_Return', item['6M_Return'])}">${fmtPct(item['6M_Return'])}</td>
+          <td class="${colorClass('1Y_Return', item['1Y_Return'])}">${fmtPct(item['1Y_Return'])}</td>
+          <td class="${colorClass('TotalScore', item.TotalScore)}">${fmtPct(item.TotalScore)}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = html;
+      updateFooter(data);
+      updateSortArrows();
+    }
+
+    function updateFooter(data) {
+      if (!data || data.length === 0) {
+        tfoot.innerHTML = '';
+        return;
+      }
+
+      let totalMoney = 0, totalLimit = 0;
+      let w1M = 0, w3M = 0, w6M = 0, w1Y = 0, wScore = 0;
+
+      data.forEach(item => {
+        const money = getNumeric(item.Money);
+        if (money && money > 0) {
+          totalMoney += money;
+          const r1 = getNumeric(item['1M_Return']); if (r1 !== null) w1M += money * r1;
+          const r3 = getNumeric(item['3M_Return']); if (r3 !== null) w3M += money * r3;
+          const r6 = getNumeric(item['6M_Return']); if (r6 !== null) w6M += money * r6;
+          const r1y = getNumeric(item['1Y_Return']); if (r1y !== null) w1Y += money * r1y;
+          const ts = getNumeric(item.TotalScore); if (ts !== null) wScore += money * ts;
+        }
+        const lim = getNumeric(item.Limit);
+        if (lim && lim > 0) totalLimit += lim;
+      });
+
+      const wavg = (sum, weight) => (weight > 0) ? sum / weight : null;
+      const avg1M = wavg(w1M, totalMoney);
+      const avg3M = wavg(w3M, totalMoney);
+      const avg6M = wavg(w6M, totalMoney);
+      const avg1Y = wavg(w1Y, totalMoney);
+      const avgScore = wavg(wScore, totalMoney);
+
+      const cls = (val) => (val !== null && val > 0) ? 'positive' : (val !== null && val < 0) ? 'negative' : '';
+
+      tfoot.innerHTML = `
+        <tr>
+          <td colspan="3" class="text-start footer-label"><strong>Weighted Avg</strong></td>
+          <td><strong>${fmtNum(totalMoney, 0)}</strong></td>
+          <td><strong>${fmtNum(totalLimit, 0)}</strong></td>
+          <td></td>
+          <td class="${cls(avg1M)}"><strong>${fmtPct(avg1M)}</strong></td>
+          <td class="${cls(avg3M)}"><strong>${fmtPct(avg3M)}</strong></td>
+          <td class="${cls(avg6M)}"><strong>${fmtPct(avg6M)}</strong></td>
+          <td class="${cls(avg1Y)}"><strong>${fmtPct(avg1Y)}</strong></td>
+          <td class="${cls(avgScore)}"><strong>${fmtPct(avgScore)}</strong></td>
+        </tr>
+      `;
+    }
+
+    function sortData(key, direction) {
+      if (document.activeElement && document.activeElement.classList.contains('money-input')) {
+        document.activeElement.blur();
+      }
+      if (direction === 'none') {
+        currentData = rawData.map(item => ({ ...item }));
+        renderTable(currentData);
+        sortState = { key: null, direction: 'none' };
+        return;
+      }
+      const numericKeys = ['Money','Limit','Fee','1M_Return','3M_Return','6M_Return','1Y_Return','TotalScore'];
+      const sorted = [...currentData];
+      sorted.sort((a, b) => {
+        let valA = a[key], valB = b[key];
+        if (numericKeys.includes(key)) {
+          valA = getNumeric(valA);
+          valB = getNumeric(valB);
+          if (valA === null && valB === null) return 0;
+          if (valA === null) return 1;
+          if (valB === null) return -1;
+          return (direction === 'asc') ? valA - valB : valB - valA;
+        } else {
+          valA = (valA || '').toString().toLowerCase();
+          valB = (valB || '').toString().toLowerCase();
+          return (direction === 'asc') ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        }
+      });
+      currentData = sorted;
+      renderTable(currentData);
+      sortState = { key, direction };
+    }
+
+    function resetOrder() {
+      currentData = rawData.map(item => ({ ...item }));
+      sortState = { key: null, direction: 'none' };
+      renderTable(currentData);
+    }
+
+    function updateSortArrows() {
+      document.querySelectorAll('#fund-table thead th').forEach(th => {
+        const key = th.getAttribute('data-sort-key');
+        const arrow = th.querySelector('.sort-arrow');
+        if (!arrow) return;
+        if (key === sortState.key && sortState.direction !== 'none') {
+          arrow.textContent = (sortState.direction === 'asc') ? '▲' : '▼';
+        } else {
+          arrow.textContent = '';
+        }
+      });
+    }
+
+    function setupSorting() {
+      document.querySelectorAll('#fund-table thead th').forEach(th => {
+        th.addEventListener('click', function() {
+          const key = this.getAttribute('data-sort-key');
+          if (!key) return;
+          let nextDir;
+          if (sortState.key === key) {
+            if (sortState.direction === 'asc') nextDir = 'desc';
+            else if (sortState.direction === 'desc') nextDir = 'none';
+            else nextDir = 'asc';
+          } else {
+            nextDir = 'asc';
+          }
+          sortData(key, nextDir);
+        });
+      });
+      resetBtn.addEventListener('click', resetOrder);
+    }
+
+    function setupMoneyInputs() {
+      tbody.addEventListener('change', function(e) {
+        const input = e.target.closest('.money-input');
+        if (!input) return;
+        const idx = parseInt(input.dataset.index);
+        const newVal = parseFloat(input.value);
+        if (!isNaN(newVal) && newVal >= 0) {
+          currentData[idx].Money = newVal;
+        } else {
+          const prev = currentData[idx].Money;
+          input.value = (prev !== null && prev !== undefined) ? prev : '';
+        }
+        const limit = parseFloat(input.dataset.limit);
+        checkLimit(input, limit);
+        updateFooter(currentData);
+      });
+      tbody.addEventListener('input', function(e) {
+        const input = e.target.closest('.money-input');
+        if (!input) return;
+        const limit = parseFloat(input.dataset.limit);
+        checkLimit(input, limit);
+      });
+    }
+
+    function initFund() {
+      fetch('funds.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Network response error');
+          return res.json();
+        })
+        .then(data => {
+          rawData = data.map(item => ({ ...item }));
+          currentData = rawData.map(item => ({ ...item }));
+          renderTable(currentData);
+          setupSorting();
+          setupMoneyInputs();
+        })
+        .catch(err => {
+          console.error(err);
+          tbody.innerHTML = `<tr><td colspan="11" class="text-center text-danger">Failed to load data.</td></tr>`;
+        });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFund);
+    } else {
+      initFund();
+    }
+  })();
+</script>
+</body>
+</html>
