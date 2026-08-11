@@ -678,6 +678,13 @@
         </tr>`;
       });
       tbody.innerHTML = html;
+
+      // ---- Check initial money inputs against their limits ----
+      document.querySelectorAll('.money-input').forEach(input => {
+        const limit = parseFloat(input.dataset.limit);
+        checkLimit(input, limit);
+      });
+
       updateFooter(data);
       updateSortArrows();
     }
@@ -830,7 +837,13 @@
           return res.json();
         })
         .then(data => {
-          rawData = data.map(item => ({ ...item }));
+          // If purchase is suspended, set limit to 0
+          rawData = data.map(item => {
+            if (item.PurchaseStatus === "暂停申购") {
+              item.Limit = 0;
+            }
+            return { ...item };
+          });
           currentData = rawData.map(item => ({ ...item }));
           renderTable(currentData);
           setupSorting();
