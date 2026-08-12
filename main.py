@@ -205,8 +205,12 @@ def generate_funds_json():
     sorted_df = result_df.sort_values("TotalScore", ascending=False).reset_index(drop=True)
     sorted_df = sorted_df.replace({np.nan: None})
     records = sorted_df.to_dict(orient="records")
+    output = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "funds": records
+    }
     with open("funds.json", "w", encoding="utf-8") as f:
-        json.dump(records, f, ensure_ascii=False, indent=2)
+        json.dump(output, f, ensure_ascii=False, indent=2)
     print("\n✅ funds.json saved")
 
 
@@ -298,6 +302,7 @@ def generate_qqq_pe_json():
     records["Date"] = records["Date"].dt.strftime("%Y-%m-%d")
 
     output = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "data": records.to_dict(orient="records"),
         "default_parameters": {
             "initial_capital": INITIAL_CAPITAL,

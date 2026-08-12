@@ -90,6 +90,7 @@
   <div class="tab-content pt-3">
     <!-- QQQ Tab -->
     <div class="tab-pane fade show active" id="qqq-pane" role="tabpanel" aria-labelledby="qqq-tab">
+      <div id="qqqGeneratedTime" class="text-muted small mb-3"></div>
       <p class="text-muted">Buy when PE crosses below lower band (−10%), sell when PE crosses above upper band (+10%).</p>
 
       <div class="card">
@@ -154,8 +155,11 @@
 
     <!-- Fund Tab -->
     <div class="tab-pane fade" id="fund-pane" role="tabpanel" aria-labelledby="fund-tab">
-      <div class="d-flex justify-content-end mb-2">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div id="fundGeneratedTime" class="text-muted small"></div>
+        <div>
         <button class="btn btn-sm btn-outline-secondary reset-btn" id="resetSort">↺ Reset Order</button>
+        </div>
       </div>
       <div class="table-container">
         <div class="table-responsive">
@@ -202,6 +206,7 @@
     const ctx = document.getElementById('returnsChart').getContext('2d');
     const dataCountSpan = document.getElementById('dataCount');
     const statusMsg = document.getElementById('statusMsg');
+    const qqqGenTime = document.getElementById('qqqGeneratedTime');
 
     let rawData = null;
     let chartInstance = null;
@@ -295,6 +300,14 @@
         }));
         defaultParams = json.default_parameters;
         dataCountSpan.textContent = rawData.length;
+
+        if (json.generated_at) {
+          const dt = new Date(json.generated_at);
+          qqqGenTime.textContent = '📅 Data generated: ' + dt.toLocaleString();
+        } else {
+          qqqGenTime.textContent = '';
+        }
+
         setStatus(`Data loaded: ${rawData.length} rows`, 'success');
 
         // Fit on all data with valid PE
@@ -620,6 +633,7 @@
     const tbody = document.getElementById('table-body');
     const tfoot = document.getElementById('table-footer');
     const resetBtn = document.getElementById('resetSort');
+    const fundGenTime = document.getElementById('fundGeneratedTime');
 
     let rawData = [];
     let currentData = [];
@@ -837,12 +851,25 @@
           return res.json();
         })
         .then(data => {
+          // Show generation time at the top
+          if (data.generated_at) {
+            const dt = new Date(data.generated_at);
+            fundGenTime.textContent = '📅 Data generated: ' + dt.toLocaleString();
+          } else {
+            fundGenTime.textContent = '';
+          }
+
+          if (!data.funds || !Array.isArray(data.funds)) {
+            throw new Error('Invalid data format: missing "funds" array');
+          }
+
           // If purchase is suspended, set limit to 0
-          rawData = data.map(item => {
-            if (item.PurchaseStatus === "暂停申购") {
-              item.Limit = 0;
+          rawData = data.funds.map(item => {
+            const copy = { ...item };
+            if (copy.PurchaseStatus === "暂停申购") {
+              copy.Limit = 0;
             }
-            return { ...item };
+            return copy;
           });
           currentData = rawData.map(item => ({ ...item }));
           renderTable(currentData);
@@ -851,7 +878,7 @@
         })
         .catch(err => {
           console.error(err);
-          tbody.innerHTML = `<tr><td colspan="11" class="text-center text-danger">Failed to load data.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="11" class="text-center text-danger">Failed to load data: ${err.message}</td></tr>`;
         });
     }
 
