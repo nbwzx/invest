@@ -58,27 +58,32 @@ def call_with_retry(func, *args, retries=3, delay=1, **kwargs):
             time.sleep(delay * (2**attempt))
     raise last_exception
 
+# Cache limit data globally
+_LIMIT_DF = None
+
+def load_limit_data():
+    global _LIMIT_DF
+    if _LIMIT_DF is None:
+        print("Fetching fund limit data from akshare...")
+        _LIMIT_DF = ak.fund_purchase_em()
+        if "日累计限额" not in _LIMIT_DF.columns and "日累计限定金额" in _LIMIT_DF.columns:
+            _LIMIT_DF.rename(columns={"日累计限定金额": "日累计限额"}, inplace=True)
+        print(f"Loaded {len(_LIMIT_DF)} limit records.")
+    return _LIMIT_DF
 
 def get_fund_limit(fund_code: str):
-    try:
-        df = call_with_retry(ak.fund_purchase_em)
-        row = df[df["基金代码"] == fund_code]
-        if not row.empty:
-            limit = row.iloc[0]["日累计限定金额"]
-            purchase_status = row.iloc[0]["申购状态"]
-            fee = row.iloc[0]["手续费"]
-            return {
-                "基金代码": fund_code,
-                "基金简称": row.iloc[0]["基金简称"],
-                "日累计限额": limit,
-                "申购状态": purchase_status,
-                "手续费": fee,
-            }
-        else:
-            return {"error": f"Fund code {fund_code} not found"}
-    except Exception as e:
-        return {"error": f"Query failed after retries: {str(e)}"}
-
+    df = load_limit_data()          # uses cached DataFrame
+    row = df[df["基金代码"] == fund_code]
+    if not row.empty:
+        return {
+            "基金代码": fund_code,
+            "基金简称": row.iloc[0]["基金简称"],
+            "日累计限额": row.iloc[0].get("日累计限额", None),
+            "申购状态": row.iloc[0].get("申购状态", None),
+            "手续费": row.iloc[0].get("手续费", None),
+        }
+    else:
+        return {"error": f"Fund code {fund_code} not found"}
 
 def get_fund_data(code):
     try:
@@ -156,6 +161,10 @@ def generate_funds_json():
         "2Y": today - timedelta(days=730),
         "3Y": today - timedelta(days=1095),
     }
+
+    # Pre‑load limit data once
+    load_limit_data()
+
     all_results = []
     for idx, code in enumerate(fund_codes):
         print(f"Processing {code}...")
