@@ -79,20 +79,14 @@
 
   <!-- Tabs -->
   <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="qqq-tab" data-bs-toggle="tab" data-bs-target="#qqq-pane" type="button" role="tab" aria-controls="qqq-pane" aria-selected="true">QQQ Trend</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="fund-tab" data-bs-toggle="tab" data-bs-target="#fund-pane" type="button" role="tab" aria-controls="fund-pane" aria-selected="false">Fund Performance</button>
-    </li>
+    <li class="nav-item"><button class="nav-link active" id="qqq-tab" data-bs-toggle="tab" data-bs-target="#qqq-pane" type="button">QQQ Trend</button></li>
+    <li class="nav-item"><button class="nav-link" id="fund-tab" data-bs-toggle="tab" data-bs-target="#fund-pane" type="button">Fund Performance</button></li>
   </ul>
 
   <div class="tab-content pt-3">
-    <!-- QQQ Tab -->
-    <div class="tab-pane fade show active" id="qqq-pane" role="tabpanel" aria-labelledby="qqq-tab">
+    <div class="tab-pane fade show active" id="qqq-pane" role="tabpanel">
       <div id="qqqGeneratedTime" class="text-muted small mb-3"></div>
       <p class="text-muted">Buy when PE crosses below lower band (−10%), sell when PE crosses above upper band (+10%).</p>
-
       <div class="card">
         <div class="card-header">⚙️ Parameters</div>
         <div class="card-body">
@@ -107,29 +101,17 @@
             <input type="number" id="threshold" step="0.5" value="10" />
             <button class="btn btn-primary" id="runBtn">▶ Update</button>
           </div>
-          <div class="mt-2">
-            <span id="statusMsg" class="status">Data loaded: <span id="dataCount">0</span> rows</span>
-          </div>
+          <div class="mt-2"><span id="statusMsg" class="status">Data loaded: <span id="dataCount">0</span> rows</span></div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">📊 Summary</div>
             <div class="card-body table-container" style="max-height: 30vh;">
               <table class="table table-striped table-bordered" id="summary-table">
-                <thead>
-                  <tr>
-                    <th>Strategy</th>
-                    <th>Final Value ($)</th>
-                    <th>Annual Return</th>
-                    <th>Max Drawdown</th>
-                  </tr>
-                </thead>
-                <tbody id="qqq-table-body">
-                  <tr><td colspan="4" class="text-center">Run simulation</td></tr>
-                </tbody>
+                <thead><tr><th>Strategy</th><th>Final Value ($)</th><th>Annual Return</th><th>Max Drawdown</th></tr></thead>
+                <tbody id="qqq-table-body"><tr><td colspan="4" class="text-center">Run simulation</td></tr></tbody>
               </table>
             </div>
           </div>
@@ -137,28 +119,27 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">📋 Parameters Used</div>
-            <ul class="list-group list-group-flush" id="params-list">
-              <li class="list-group-item">No simulation run yet</li>
-            </ul>
+            <ul class="list-group list-group-flush" id="params-list"><li class="list-group-item">No simulation run yet</li></ul>
           </div>
         </div>
       </div>
-
-      <div class="chart-container">
-        <canvas id="returnsChart"></canvas>
-      </div>
+      <div class="chart-container"><canvas id="returnsChart"></canvas></div>
       <div class="legend-note">
         <span class="swatch green"></span> PE <span class="fw-bold">below</span> lower band → <strong>Buy Zone</strong> &nbsp;&nbsp;&nbsp;
         <span class="swatch red"></span> PE <span class="fw-bold">above</span> upper band → <strong>Sell Zone</strong>
       </div>
     </div>
 
-    <!-- Fund Tab -->
-    <div class="tab-pane fade" id="fund-pane" role="tabpanel" aria-labelledby="fund-tab">
-      <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="tab-pane fade" id="fund-pane" role="tabpanel">
+      <!-- Only the header part changed: added checkbox -->
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div id="fundGeneratedTime" class="text-muted small"></div>
-        <div>
-        <button class="btn btn-sm btn-outline-secondary reset-btn" id="resetSort">↺ Reset Order</button>
+        <div class="d-flex align-items-center gap-2">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="showAvailableOnly" checked>
+            <label class="form-check-label" for="showAvailableOnly">Show only available funds</label>
+          </div>
+          <button class="btn btn-sm btn-outline-secondary reset-btn" id="resetSort">↺ Reset Order</button>
         </div>
       </div>
       <div class="table-container">
@@ -172,15 +153,57 @@
                 <th data-sort-key="Money">Money<span class="sort-arrow"></span></th>
                 <th data-sort-key="Limit">Limit<span class="sort-arrow"></span></th>
                 <th data-sort-key="Fee">Fee<span class="sort-arrow"></span></th>
-                <th data-sort-key="1M_Return">1M<span class="sort-arrow"></span></th>
-                <th data-sort-key="3M_Return">3M<span class="sort-arrow"></span></th>
-                <th data-sort-key="6M_Return">6M<span class="sort-arrow"></span></th>
-                <th data-sort-key="1Y_Return">1Y<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_Return">1M Ret<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_Return">3M Ret<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_Return">6M Ret<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_Return">1Y Ret<span class="sort-arrow"></span></th>
                 <th data-sort-key="TotalScore">Score<span class="sort-arrow"></span></th>
+                <!-- 1M -->
+                <th data-sort-key="1M_Correlation">1M r<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_WinRate">1M Win%<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_SameDirectionRate">1M Same%<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_Beta">1M Beta<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_Sharpe">1M Sharpe<span class="sort-arrow"></span></th>
+                <th data-sort-key="1M_Calmar">1M Calmar<span class="sort-arrow"></span></th>
+                <!-- 3M -->
+                <th data-sort-key="3M_Correlation">3M r<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_WinRate">3M Win%<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_SameDirectionRate">3M Same%<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_Beta">3M Beta<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_Sharpe">3M Sharpe<span class="sort-arrow"></span></th>
+                <th data-sort-key="3M_Calmar">3M Calmar<span class="sort-arrow"></span></th>
+                <!-- 6M -->
+                <th data-sort-key="6M_Correlation">6M r<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_WinRate">6M Win%<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_SameDirectionRate">6M Same%<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_Beta">6M Beta<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_Sharpe">6M Sharpe<span class="sort-arrow"></span></th>
+                <th data-sort-key="6M_Calmar">6M Calmar<span class="sort-arrow"></span></th>
+                <!-- 1Y -->
+                <th data-sort-key="1Y_Correlation">1Y r<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_WinRate">1Y Win%<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_SameDirectionRate">1Y Same%<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_Beta">1Y Beta<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_Sharpe">1Y Sharpe<span class="sort-arrow"></span></th>
+                <th data-sort-key="1Y_Calmar">1Y Calmar<span class="sort-arrow"></span></th>
+                <!-- 2Y -->
+                <th data-sort-key="2Y_Correlation">2Y r<span class="sort-arrow"></span></th>
+                <th data-sort-key="2Y_WinRate">2Y Win%<span class="sort-arrow"></span></th>
+                <th data-sort-key="2Y_SameDirectionRate">2Y Same%<span class="sort-arrow"></span></th>
+                <th data-sort-key="2Y_Beta">2Y Beta<span class="sort-arrow"></span></th>
+                <th data-sort-key="2Y_Sharpe">2Y Sharpe<span class="sort-arrow"></span></th>
+                <th data-sort-key="2Y_Calmar">2Y Calmar<span class="sort-arrow"></span></th>
+                <!-- 3Y -->
+                <th data-sort-key="3Y_Correlation">3Y r<span class="sort-arrow"></span></th>
+                <th data-sort-key="3Y_WinRate">3Y Win%<span class="sort-arrow"></span></th>
+                <th data-sort-key="3Y_SameDirectionRate">3Y Same%<span class="sort-arrow"></span></th>
+                <th data-sort-key="3Y_Beta">3Y Beta<span class="sort-arrow"></span></th>
+                <th data-sort-key="3Y_Sharpe">3Y Sharpe<span class="sort-arrow"></span></th>
+                <th data-sort-key="3Y_Calmar">3Y Calmar<span class="sort-arrow"></span></th>
               </tr>
             </thead>
             <tbody id="table-body">
-              <tr><td colspan="11" class="text-center py-3">Loading…</td></tr>
+              <tr><td colspan="47" class="text-center py-3">Loading…</td></tr>
             </tbody>
             <tfoot id="table-footer"></tfoot>
           </table>
@@ -190,11 +213,10 @@
   </div>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- ============================================================ -->
-<!-- JavaScript: QQQ Chart                                         -->
+<!-- JavaScript: QQQ Chart (unchanged)                            -->
 <!-- ============================================================ -->
 <script>
   (function() {
@@ -211,10 +233,8 @@
     let rawData = null;
     let chartInstance = null;
     let defaultParams = {};
-
-    // ---- Global linear fit (on full dataset) ----
-    let globalCoeffs = null;      // [a, b] for y = a + b*x
-    let globalStartDate = null;   // Date object of the first data point
+    let globalCoeffs = null;
+    let globalStartDate = null;
 
     function setStatus(msg, type = 'info') {
       statusMsg.textContent = msg;
@@ -252,17 +272,10 @@
       let inInterval = false;
       let start = 0;
       for (let i = 0; i < condition.length; i++) {
-        if (condition[i] && !inInterval) {
-          inInterval = true;
-          start = i;
-        } else if (!condition[i] && inInterval) {
-          inInterval = false;
-          intervals.push([start, i - 1]);
-        }
+        if (condition[i] && !inInterval) { inInterval = true; start = i; }
+        else if (!condition[i] && inInterval) { inInterval = false; intervals.push([start, i - 1]); }
       }
-      if (inInterval) {
-        intervals.push([start, condition.length - 1]);
-      }
+      if (inInterval) intervals.push([start, condition.length - 1]);
       return intervals;
     }
 
@@ -270,23 +283,15 @@
       const n = x.length;
       let sumX = 0, sumY = 0, sumXX = 0, sumXY = 0;
       for (let i = 0; i < n; i++) {
-        sumX += x[i];
-        sumY += y[i];
-        sumXX += x[i] * x[i];
-        sumXY += x[i] * y[i];
+        sumX += x[i]; sumY += y[i]; sumXX += x[i] * x[i]; sumXY += x[i] * y[i];
       }
       const det = n * sumXX - sumX * sumX;
       let a, b;
-      if (Math.abs(det) < 1e-12) {
-        a = 0; b = 0;
-      } else {
-        a = (sumXX * sumY - sumX * sumXY) / det;
-        b = (n * sumXY - sumX * sumY) / det;
-      }
+      if (Math.abs(det) < 1e-12) { a = 0; b = 0; }
+      else { a = (sumXX * sumY - sumX * sumXY) / det; b = (n * sumXY - sumX * sumY) / det; }
       return { coeffs: [a, b] };
     }
 
-    // ---- Load data, fit global trend ----
     async function loadData() {
       try {
         setStatus('Loading data...', 'info');
@@ -310,7 +315,6 @@
 
         setStatus(`Data loaded: ${rawData.length} rows`, 'success');
 
-        // Fit on all data with valid PE
         const valid = rawData.filter(r => !isNaN(r.PE));
         if (valid.length === 0) throw new Error('No valid PE data');
         globalStartDate = valid[0].Date;
@@ -320,7 +324,6 @@
         globalCoeffs = coeffs;
         console.log('Global linear fit:', globalCoeffs);
 
-        // Pre-fill controls
         document.getElementById('initCapital').value = defaultParams.initial_capital || 10000;
         document.getElementById('threshold').value = 10;
         const today = new Date();
@@ -337,10 +340,8 @@
       }
     }
 
-    // ---- Simulation using global trend ----
     function simulateBuyAndHold(data, params) {
       const { initCapital, threshold } = params;
-
       const valid = data.filter(r => r.PE !== null && r.PE !== undefined && !isNaN(r.PE));
       if (valid.length === 0) throw new Error('No valid PE data in selected date range');
 
@@ -348,16 +349,13 @@
       const endDate = valid[valid.length - 1].Date;
       const firstClose = valid[0].Close;
 
-      // Compute fitted PE using global coefficients
       const fittedPE = valid.map(r => {
         const days = (r.Date - globalStartDate) / (24 * 60 * 60 * 1000);
         return globalCoeffs[0] + globalCoeffs[1] * days;
       });
 
-      // Bands for shading
       const upperBand = fittedPE.map(v => v * (1 + threshold / 100));
       const lowerBand = fittedPE.map(v => v * (1 - threshold / 100));
-
       const peVals = valid.map(r => r.PE);
       const buyCondition = peVals.map((pe, i) => pe < lowerBand[i]);
       const sellCondition = peVals.map((pe, i) => pe > upperBand[i]);
@@ -390,11 +388,9 @@
       };
     }
 
-    // ---- Shading plugin ----
     const shadingPlugin = {
       id: 'shadingPlugin',
       intervals: { buy: [], sell: [] },
-
       afterDraw(chart) {
         const { ctx, scales, chartArea } = chart;
         const { top, bottom, left, right } = chartArea;
@@ -419,13 +415,11 @@
             ctx.restore();
           });
         };
-
         drawBoxes(this.intervals.buy, 'rgba(0, 200, 0, 0.2)');
         drawBoxes(this.intervals.sell, 'rgba(255, 0, 0, 0.2)');
       }
     };
 
-    // ---- Render results ----
     function renderResults(simData) {
       const { result, peData, fittedPE, coeffs, buyIntervals, sellIntervals, params } = simData;
 
@@ -442,7 +436,6 @@
       `;
       qqqTbody.appendChild(tr);
 
-      const coeffStr = coeffs.map(c => c.toFixed(4)).join(', ');
       paramsList.innerHTML = `
         <li class="list-group-item">Initial Capital: $${params.initCapital}</li>
         <li class="list-group-item">Threshold: ${params.threshold}%</li>
@@ -451,10 +444,7 @@
         <li class="list-group-item">Buy zones: ${buyIntervals.length}, Sell zones: ${sellIntervals.length}</li>
       `;
 
-      if (chartInstance) {
-        chartInstance.destroy();
-        chartInstance = null;
-      }
+      if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
 
       const labels = result.dates.map(d => formatDate(d));
       const peValues = peData.map(d => d.PE);
@@ -462,9 +452,7 @@
       shadingPlugin.intervals.buy = buyIntervals;
       shadingPlugin.intervals.sell = sellIntervals;
 
-      if (!Chart.registry.plugins.get('shadingPlugin')) {
-        Chart.register(shadingPlugin);
-      }
+      if (!Chart.registry.plugins.get('shadingPlugin')) { Chart.register(shadingPlugin); }
 
       chartInstance = new Chart(ctx, {
         type: 'line',
@@ -528,33 +516,15 @@
             }
           },
           scales: {
-            x: {
-              type: 'category',
-              labels: labels,
-              ticks: { maxTicksLimit: 20 }
-            },
-            y: {
-              type: 'linear',
-              display: true,
-              position: 'left',
-              ticks: { callback: v => (v * 100).toFixed(0) + '%' },
-              title: { display: true, text: 'Cumulative Return' }
-            },
-            y1: {
-              type: 'linear',
-              display: true,
-              position: 'right',
-              grid: { drawOnChartArea: false },
-              ticks: { callback: v => v.toFixed(1) },
-              title: { display: true, text: 'PE Ratio' }
-            }
+            x: { type: 'category', labels: labels, ticks: { maxTicksLimit: 20 } },
+            y: { type: 'linear', display: true, position: 'left', ticks: { callback: v => (v * 100).toFixed(0) + '%' }, title: { display: true, text: 'Cumulative Return' } },
+            y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false }, ticks: { callback: v => v.toFixed(1) }, title: { display: true, text: 'PE Ratio' } }
           }
         },
         plugins: [shadingPlugin]
       });
     }
 
-    // ---- Run ----
     function runSimulation() {
       try {
         setStatus('Running simulation...', 'info');
@@ -601,24 +571,17 @@
       }
     }
 
-    // ---- Tab shown event ----
     document.getElementById('qqq-tab').addEventListener('shown.bs.tab', function() {
-      if (chartInstance) {
-        chartInstance.resize();
-      } else if (!rawData) {
-        loadData();
-      } else {
-        runSimulation();
-      }
+      if (chartInstance) { chartInstance.resize(); }
+      else if (!rawData) { loadData(); }
+      else { runSimulation(); }
     });
 
-    // ---- Initial load ----
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', loadData);
     } else {
       loadData();
     }
-
     runBtn.addEventListener('click', runSimulation);
   })();
 </script>
@@ -638,6 +601,7 @@
     let rawData = [];
     let currentData = [];
     let sortState = { key: null, direction: 'none' };
+    let showOnlyAvailable = true;
 
     const getNumeric = val => (val !== null && val !== undefined && !isNaN(Number(val))) ? Number(val) : null;
     const fmtPct = val => (getNumeric(val) !== null) ? (Number(val) * 100).toFixed(2) + '%' : '—';
@@ -660,9 +624,12 @@
       }
     }
 
+    const periods = ['1M', '3M', '6M', '1Y', '2Y', '3Y'];
+    const metrics = ['Correlation', 'WinRate', 'SameDirectionRate', 'Beta', 'Sharpe', 'Calmar'];
+
     function renderTable(data) {
       if (!data || data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="11" class="text-center">No data available</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="47" class="text-center">No data available</td></tr>`;
         tfoot.innerHTML = '';
         return;
       }
@@ -674,6 +641,7 @@
         const limitDisplay = (limit !== null && limit !== undefined) ? limit : '—';
         const feeDisplay = (item.Fee !== null && item.Fee !== undefined) ? item.Fee : '—';
         const rowClass = (idx % 2 === 0) ? '' : 'table-light';
+
         html += `<tr class="${rowClass}">
           <td>${idx + 1}</td>
           <td>${item.Code || ''}</td>
@@ -688,12 +656,28 @@
           <td class="${colorClass('3M_Return', item['3M_Return'])}">${fmtPct(item['3M_Return'])}</td>
           <td class="${colorClass('6M_Return', item['6M_Return'])}">${fmtPct(item['6M_Return'])}</td>
           <td class="${colorClass('1Y_Return', item['1Y_Return'])}">${fmtPct(item['1Y_Return'])}</td>
-          <td class="${colorClass('TotalScore', item.TotalScore)}">${fmtPct(item.TotalScore)}</td>
-        </tr>`;
+          <td class="${colorClass('TotalScore', item.TotalScore)}">${fmtPct(item.TotalScore)}</td>`;
+
+        periods.forEach(period => {
+          const corr = item[period + '_Correlation'];
+          const win = item[period + '_WinRate'];
+          const same = item[period + '_SameDirectionRate'];
+          const beta = item[period + '_Beta'];
+          const sharpe = item[period + '_Sharpe'];
+          const calmar = item[period + '_Calmar'];
+          html += `
+            <td>${fmtNum(corr, 4)}</td>
+            <td>${fmtPct(win)}</td>
+            <td>${fmtPct(same)}</td>
+            <td>${fmtNum(beta, 3)}</td>
+            <td>${fmtNum(sharpe, 3)}</td>
+            <td>${fmtNum(calmar, 3)}</td>`;
+        });
+
+        html += '</tr>';
       });
       tbody.innerHTML = html;
 
-      // ---- Check initial money inputs against their limits ----
       document.querySelectorAll('.money-input').forEach(input => {
         const limit = parseFloat(input.dataset.limit);
         checkLimit(input, limit);
@@ -704,10 +688,7 @@
     }
 
     function updateFooter(data) {
-      if (!data || data.length === 0) {
-        tfoot.innerHTML = '';
-        return;
-      }
+      if (!data || data.length === 0) { tfoot.innerHTML = ''; return; }
 
       let totalMoney = 0, totalLimit = 0;
       let w1M = 0, w3M = 0, w6M = 0, w1Y = 0, wScore = 0;
@@ -735,19 +716,55 @@
 
       const cls = (val) => (val !== null && val > 0) ? 'positive' : (val !== null && val < 0) ? 'negative' : '';
 
-      tfoot.innerHTML = `
-        <tr>
-          <td colspan="3" class="text-start footer-label"><strong>Weighted Avg</strong></td>
-          <td><strong>${fmtNum(totalMoney, 0)}</strong></td>
-          <td><strong>${fmtNum(totalLimit, 0)}</strong></td>
-          <td></td>
-          <td class="${cls(avg1M)}"><strong>${fmtPct(avg1M)}</strong></td>
-          <td class="${cls(avg3M)}"><strong>${fmtPct(avg3M)}</strong></td>
-          <td class="${cls(avg6M)}"><strong>${fmtPct(avg6M)}</strong></td>
-          <td class="${cls(avg1Y)}"><strong>${fmtPct(avg1Y)}</strong></td>
-          <td class="${cls(avgScore)}"><strong>${fmtPct(avgScore)}</strong></td>
-        </tr>
-      `;
+      let footerCells = `
+        <td colspan="3" class="text-start footer-label"><strong>Weighted Avg</strong></td>
+        <td><strong>${fmtNum(totalMoney, 0)}</strong></td>
+        <td></td>
+        <td></td>
+        <td class="${cls(avg1M)}"><strong>${fmtPct(avg1M)}</strong></td>
+        <td class="${cls(avg3M)}"><strong>${fmtPct(avg3M)}</strong></td>
+        <td class="${cls(avg6M)}"><strong>${fmtPct(avg6M)}</strong></td>
+        <td class="${cls(avg1Y)}"><strong>${fmtPct(avg1Y)}</strong></td>
+        <td class="${cls(avgScore)}"><strong>${fmtPct(avgScore)}</strong></td>`;
+
+      for (let i = 0; i < 36; i++) { footerCells += `<td></td>`; }
+
+      tfoot.innerHTML = `<tr>${footerCells}</tr>`;
+    }
+
+    function refreshDisplay() {
+      let data = rawData.slice();
+
+      if (showOnlyAvailable) {
+        data = data.filter(item => {
+          const limit = parseFloat(item.Limit);
+          return !isNaN(limit) && limit > 0;
+        });
+      }
+
+      if (sortState.key && sortState.direction !== 'none') {
+        const numericKeys = ['Money','Limit','Fee','1M_Return','3M_Return','6M_Return','1Y_Return','TotalScore'];
+        periods.forEach(p => {
+          metrics.forEach(m => numericKeys.push(p + '_' + m));
+        });
+        data.sort((a, b) => {
+          let va = a[sortState.key], vb = b[sortState.key];
+          if (numericKeys.includes(sortState.key)) {
+            va = parseFloat(va); vb = parseFloat(vb);
+            if (isNaN(va) && isNaN(vb)) return 0;
+            if (isNaN(va)) return 1;
+            if (isNaN(vb)) return -1;
+            return (sortState.direction === 'asc') ? va - vb : vb - va;
+          } else {
+            va = (va || '').toString().toLowerCase();
+            vb = (vb || '').toString().toLowerCase();
+            return (sortState.direction === 'asc') ? va.localeCompare(vb) : vb.localeCompare(va);
+          }
+        });
+      }
+
+      currentData = data;
+      renderTable(currentData);
     }
 
     function sortData(key, direction) {
@@ -755,37 +772,16 @@
         document.activeElement.blur();
       }
       if (direction === 'none') {
-        currentData = rawData.map(item => ({ ...item }));
-        renderTable(currentData);
         sortState = { key: null, direction: 'none' };
-        return;
+      } else {
+        sortState = { key, direction };
       }
-      const numericKeys = ['Money','Limit','Fee','1M_Return','3M_Return','6M_Return','1Y_Return','TotalScore'];
-      const sorted = [...currentData];
-      sorted.sort((a, b) => {
-        let valA = a[key], valB = b[key];
-        if (numericKeys.includes(key)) {
-          valA = getNumeric(valA);
-          valB = getNumeric(valB);
-          if (valA === null && valB === null) return 0;
-          if (valA === null) return 1;
-          if (valB === null) return -1;
-          return (direction === 'asc') ? valA - valB : valB - valA;
-        } else {
-          valA = (valA || '').toString().toLowerCase();
-          valB = (valB || '').toString().toLowerCase();
-          return (direction === 'asc') ? valA.localeCompare(valB) : valB.localeCompare(valA);
-        }
-      });
-      currentData = sorted;
-      renderTable(currentData);
-      sortState = { key, direction };
+      refreshDisplay();
     }
 
     function resetOrder() {
-      currentData = rawData.map(item => ({ ...item }));
       sortState = { key: null, direction: 'none' };
-      renderTable(currentData);
+      refreshDisplay();
     }
 
     function updateSortArrows() {
@@ -847,11 +843,10 @@
     function initFund() {
       fetch('funds.json')
         .then(res => {
-          if (!res.ok) throw new Error('Network response error');
+          if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
         })
         .then(data => {
-          // Show generation time at the top
           if (data.generated_at) {
             const dt = new Date(data.generated_at);
             fundGenTime.textContent = '📅 Data generated: ' + dt.toLocaleString();
@@ -859,26 +854,26 @@
             fundGenTime.textContent = '';
           }
 
-          if (!data.funds || !Array.isArray(data.funds)) {
-            throw new Error('Invalid data format: missing "funds" array');
-          }
-
-          // If purchase is suspended, set limit to 0
           rawData = data.funds.map(item => {
             const copy = { ...item };
-            if (copy.PurchaseStatus === "暂停申购") {
+            if (copy.PurchaseStatus !== "限大额" && copy.PurchaseStatus !== "开放申购") {
               copy.Limit = 0;
             }
             return copy;
           });
-          currentData = rawData.map(item => ({ ...item }));
-          renderTable(currentData);
+
+          refreshDisplay();
           setupSorting();
           setupMoneyInputs();
+
+          document.getElementById('showAvailableOnly').addEventListener('change', function() {
+            showOnlyAvailable = this.checked;
+            refreshDisplay();
+          });
         })
         .catch(err => {
-          console.error(err);
-          tbody.innerHTML = `<tr><td colspan="11" class="text-center text-danger">Failed to load data: ${err.message}</td></tr>`;
+          console.error('Failed to load funds.json:', err);
+          tbody.innerHTML = `<tr><td colspan="47" class="text-center text-danger">Failed to load data: ${err.message}</td></tr>`;
         });
     }
 
