@@ -157,6 +157,7 @@
                 <th data-sort-key="3M_Return">3M Ret<span class="sort-arrow"></span></th>
                 <th data-sort-key="6M_Return">6M Ret<span class="sort-arrow"></span></th>
                 <th data-sort-key="1Y_Return">1Y Ret<span class="sort-arrow"></span></th>
+                <th data-sort-key="3Y_Return">3Y Ret<span class="sort-arrow"></span></th>
                 <th data-sort-key="TotalScore">Score<span class="sort-arrow"></span></th>
                 <!-- 1M -->
                 <th data-sort-key="1M_Correlation">1M r<span class="sort-arrow"></span></th>
@@ -607,7 +608,7 @@
     const fmtPct = val => (getNumeric(val) !== null) ? (Number(val) * 100).toFixed(2) + '%' : '—';
     const fmtNum = (val, d=2) => (getNumeric(val) !== null) ? Number(val).toFixed(d) : '—';
 
-    const colorColumns = ['1M_Return','3M_Return','6M_Return','1Y_Return','TotalScore'];
+    const colorColumns = ['1M_Return','3M_Return','6M_Return','1Y_Return','3Y_Return', 'TotalScore'];
     const colorClass = (key, val) => {
       if (!colorColumns.includes(key)) return '';
       const num = getNumeric(val);
@@ -656,6 +657,7 @@
           <td class="${colorClass('3M_Return', item['3M_Return'])}">${fmtPct(item['3M_Return'])}</td>
           <td class="${colorClass('6M_Return', item['6M_Return'])}">${fmtPct(item['6M_Return'])}</td>
           <td class="${colorClass('1Y_Return', item['1Y_Return'])}">${fmtPct(item['1Y_Return'])}</td>
+          <td class="${colorClass('3Y_Return', item['3Y_Return'])}">${fmtPct(item['3Y_Return'])}</td>
           <td class="${colorClass('TotalScore', item.TotalScore)}">${fmtPct(item.TotalScore)}</td>`;
 
         periods.forEach(period => {
@@ -691,7 +693,7 @@
       if (!data || data.length === 0) { tfoot.innerHTML = ''; return; }
 
       let totalMoney = 0, totalLimit = 0;
-      let w1M = 0, w3M = 0, w6M = 0, w1Y = 0, wScore = 0;
+      let w1M = 0, w3M = 0, w6M = 0, w1Y = 0, w3Y = 0, wScore = 0;
 
       data.forEach(item => {
         const money = getNumeric(item.Money);
@@ -701,6 +703,7 @@
           const r3 = getNumeric(item['3M_Return']); if (r3 !== null) w3M += money * r3;
           const r6 = getNumeric(item['6M_Return']); if (r6 !== null) w6M += money * r6;
           const r1y = getNumeric(item['1Y_Return']); if (r1y !== null) w1Y += money * r1y;
+          const r3y = getNumeric(item['3Y_Return']); if (r3y !== null) w3Y += money * r3y;
           const ts = getNumeric(item.TotalScore); if (ts !== null) wScore += money * ts;
         }
         const lim = getNumeric(item.Limit);
@@ -712,6 +715,7 @@
       const avg3M = wavg(w3M, totalMoney);
       const avg6M = wavg(w6M, totalMoney);
       const avg1Y = wavg(w1Y, totalMoney);
+      const avg3Y = wavg(w3Y, totalMoney);
       const avgScore = wavg(wScore, totalMoney);
 
       const cls = (val) => (val !== null && val > 0) ? 'positive' : (val !== null && val < 0) ? 'negative' : '';
@@ -725,6 +729,7 @@
         <td class="${cls(avg3M)}"><strong>${fmtPct(avg3M)}</strong></td>
         <td class="${cls(avg6M)}"><strong>${fmtPct(avg6M)}</strong></td>
         <td class="${cls(avg1Y)}"><strong>${fmtPct(avg1Y)}</strong></td>
+        <td class="${cls(avg3Y)}"><strong>${fmtPct(avg3Y)}</strong></td>
         <td class="${cls(avgScore)}"><strong>${fmtPct(avgScore)}</strong></td>`;
 
       for (let i = 0; i < 36; i++) { footerCells += `<td></td>`; }
