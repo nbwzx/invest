@@ -160,6 +160,10 @@ def period_stats(nav_df, end_date, days):
     if len(segment) < 2:
         return None, None, None, None, None
 
+    # Check if the fund actually covers the entire period.
+    if nav_df["日期"].min() > start:
+        return None, None, None, None, None
+
     navs = segment["单位净值"].values
     returns = navs[1:] / navs[:-1] - 1
     cum_ret = navs[-1] / navs[0] - 1.0
@@ -259,6 +263,11 @@ def compute_period_metrics(fund_ret_df, qqq_df, start_date, end_date, label):
         (fund_ret_df["日期"] >= start_date) & (fund_ret_df["日期"] <= end_date)
     ]
     qqq_period = qqq_df[(qqq_df["Date"] >= start_date) & (qqq_df["Date"] <= end_date)]
+
+    if fund_period.empty:
+        return None
+    if fund_ret_df["日期"].min() > start_date:
+        return None
 
     merged = pd.merge(
         fund_period, qqq_period, left_on="日期", right_on="Date", how="inner"
@@ -525,14 +534,17 @@ def generate_funds_json(refresh_cache=False):
                 )
         print("Period details (returns & risk):")
         for label in period_days:
-            ret = best.get(f"{label}_Return", 0)
-            ann = best.get(f"{label}_AnnReturn", 0)
-            cal = best.get(f"{label}_Calmar", 0)
-            sharpe = best.get(f"{label}_Sharpe", None)
-            sharpe_str = f"{sharpe:.3f}" if sharpe is not None else "N/A"
-            print(
-                f"  {label}: cum_ret={ret:.4%}, ann_ret={ann:.4%}, calmar={cal:.3f}, Sharpe={sharpe_str}"
-            )
+            ret_val = best.get(f"{label}_Return")
+            ann_val = best.get(f"{label}_AnnReturn")
+            cal_val = best.get(f"{label}_Calmar")
+            sharpe_val = best.get(f"{label}_Sharpe")
+
+            ret_str = f"{ret_val:.4%}" if ret_val is not None else "N/A"
+            ann_str = f"{ann_val:.4%}" if ann_val is not None else "N/A"
+            cal_str = f"{cal_val:.3f}" if cal_val is not None else "N/A"
+            sharpe_str = f"{sharpe_val:.3f}" if sharpe_val is not None else "N/A"
+
+            print(f"  {label}: cum_ret={ret_str}, ann_ret={ann_str}, calmar={cal_str}, Sharpe={sharpe_str}")
     else:
         print("No valid funds found after filtering.")
 
