@@ -358,6 +358,7 @@ def generate_funds_json(refresh_cache=False):
                     f"[{idx+1}/{total}] {code} {name} -> No data before cutoff, skipping"
                 )
                 continue
+            nav_df["单位净值"] = pd.to_numeric(nav_df["单位净值"], errors='coerce')
 
             # ---- Period statistics ----
             period_data = {}
