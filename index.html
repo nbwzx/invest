@@ -71,6 +71,12 @@
       .param-group input, .param-group input[type="date"] { width: 100%; }
       .param-group .btn { margin-left: 0; }
     }
+
+    #limit-change-table { font-size: 0.85rem; margin-bottom: 0; width: 100%; border-collapse: collapse; }
+    #limit-change-table th, #limit-change-table td { padding: 0.4rem 0.5rem; vertical-align: middle; text-align: center; white-space: nowrap; }
+    #limit-change-table th { background: #f8f9fa; border-bottom: 2px solid #dee2e6; }
+    .change-container { max-height: 40vh; overflow-y: auto; }
+    .change-container .table-responsive { max-height: none; }
   </style>
 </head>
 <body>
@@ -130,8 +136,8 @@
       </div>
     </div>
 
+    <!-- Fund Performance Tab (modified: added second table for limit changes) -->
     <div class="tab-pane fade" id="fund-pane" role="tabpanel">
-      <!-- Only the header part changed: added checkbox -->
       <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
         <div id="fundGeneratedTime" class="text-muted small"></div>
         <div class="d-flex align-items-center gap-2">
@@ -142,6 +148,7 @@
           <button class="btn btn-sm btn-outline-secondary reset-btn" id="resetSort">↺ Reset Order</button>
         </div>
       </div>
+      
       <div class="table-container">
         <div class="table-responsive">
           <table class="table table-hover table-sm mb-0" id="fund-table">
@@ -207,6 +214,30 @@
               <tr><td colspan="47" class="text-center py-3">Loading…</td></tr>
             </tbody>
             <tfoot id="table-footer"></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <hr class="my-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5>📋 Limit Change History</h5>
+        <span id="changeGenTime" class="text-muted small"></span>
+      </div>
+      <div class="table-container change-container">
+        <div class="table-responsive">
+          <table class="table table-sm table-striped table-bordered" id="limit-change-table">
+            <thead>
+              <tr>
+                <th>Change Date</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Old Limit</th>
+                <th>New Limit</th>
+              </tr>
+            </thead>
+            <tbody id="change-body">
+              <tr><td colspan="5" class="text-center">Loading changes…</td></tr>
+            </tbody>
           </table>
         </div>
       </div>
@@ -588,7 +619,7 @@
 </script>
 
 <!-- ============================================================ -->
-<!-- JavaScript: Fund Dashboard                                    -->
+<!-- JavaScript: Fund Dashboard + Limit Changes                   -->
 <!-- ============================================================ -->
 <script>
   (function() {
@@ -598,6 +629,8 @@
     const tfoot = document.getElementById('table-footer');
     const resetBtn = document.getElementById('resetSort');
     const fundGenTime = document.getElementById('fundGeneratedTime');
+    const changeBody = document.getElementById('change-body');
+    const changeGenTime = document.getElementById('changeGenTime');
 
     let rawData = [];
     let currentData = [];
@@ -845,6 +878,52 @@
       });
     }
 
+    function loadLimitChanges() {
+      fetch('limit_changes.json')
+        .then(res => {
+          if (!res.ok) {
+            if (res.status === 404) {
+              throw new Error('File not found (no changes yet)');
+            }
+            throw new Error('HTTP ' + res.status);
+          }
+          return res.json();
+        })
+        .then(data => {
+          if (data.generated_at) {
+            const dt = new Date(data.generated_at);
+            changeGenTime.textContent = '📅 Updated: ' + dt.toLocaleString();
+          } else {
+            changeGenTime.textContent = '';
+          }
+
+          const changes = data.changes || [];
+          if (changes.length === 0) {
+            changeBody.innerHTML = '<tr><td colspan="5" class="text-center">No limit changes recorded</td></tr>';
+            return;
+          }
+
+          changes.sort((a, b) => (b.change_date || '').localeCompare(a.change_date || ''));
+
+          let html = '';
+          changes.forEach(item => {
+            html += `<tr>
+              <td>${item.change_date || '—'}</td>
+              <td>${item.code || ''}</td>
+              <td>${item.name || ''}</td>
+              <td>${(item.old_limit !== null && item.old_limit !== undefined) ? item.old_limit : '—'}</td>
+              <td>${(item.new_limit !== null && item.new_limit !== undefined) ? item.new_limit : '—'}</td>
+            </tr>`;
+          });
+          changeBody.innerHTML = html;
+        })
+        .catch(err => {
+          console.warn('Failed to load limit_changes.json:', err);
+          changeBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted">No limit change history available</td></tr>`;
+          changeGenTime.textContent = '';
+        });
+    }
+
     function initFund() {
       fetch('funds.json')
         .then(res => {
@@ -880,7 +959,12 @@
           console.error('Failed to load funds.json:', err);
           tbody.innerHTML = `<tr><td colspan="47" class="text-center text-danger">Failed to load data: ${err.message}</td></tr>`;
         });
+
+      loadLimitChanges();
     }
+
+    document.getElementById('fund-tab').addEventListener('shown.bs.tab', function() {
+    });
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initFund);

@@ -54,6 +54,7 @@ code_to_amount = dict(zip(fund_codes, investment_amounts))
 CACHE_FILE = "us_funds_cache.json"
 SCORE_JSON = "funds.json"
 QQQ_JSON = "qqq_pe_data.json"
+LIMIT_CHANGES_JSON = "limit_changes.json"
 
 RISK_FREE_RATE = 0.03
 _LIMIT_DF = None
@@ -311,6 +312,33 @@ def generate_funds_json(refresh_cache=False):
 
     load_limit_data()
 
+    old_limits = {}
+    old_date = None
+    if os.path.exists(SCORE_JSON):
+        try:
+            with open(SCORE_JSON, 'r', encoding='utf-8') as f:
+                old_data = json.load(f)
+                old_generated_at = old_data.get("generated_at")
+                if old_generated_at:
+                    try:
+                        old_date = datetime.fromisoformat(
+                            old_generated_at.replace('Z', '+00:00')
+                        ).date()
+                    except Exception:
+                        old_date = None
+                for fund in old_data.get("funds", []):
+                    code = fund.get("Code")
+                    if code:
+                        old_limits[code] = {
+                            "limit": fund.get("Limit"),
+                            "status": fund.get("PurchaseStatus"),
+                            "name": fund.get("Name")
+                        }
+            print(f"Loaded old limits from {SCORE_JSON} for {len(old_limits)} funds.")
+        except Exception as e:
+            print(f"Could not read old funds.json: {e}")
+            old_limits = {}
+
     funds = load_us_fund_cache(refresh=refresh_cache)
     if funds.empty:
         return {"generated_at": datetime.now(timezone.utc).isoformat(), "funds": []}
@@ -339,13 +367,13 @@ def generate_funds_json(refresh_cache=False):
     end_date = pd.to_datetime(end_date_str)
     results = []
     total = len(funds)
+    current_limits = {}
 
     for idx, (_, row) in enumerate(funds.iterrows()):
         code = row["基金代码"]
         name = row["基金简称"]
 
         try:
-            # Use call_with_retry for robustness (like base)
             nav_df = call_with_retry(ef.fund.get_quote_history, code)
             if nav_df is None or nav_df.empty:
                 print(f"[{idx+1}/{total}] {code} {name} -> No NAV data, skipping")
@@ -389,12 +417,26 @@ def generate_funds_json(refresh_cache=False):
                 print(
                     f"[{idx+1}/{total}] {code} {name} -> Insufficient period data, skipping score"
                 )
+                limit = get_fund_limit(code)
+                daily_limit = limit.get("daily_limit")
+                status = limit.get("subscription_status")
+                current_limits[code] = {
+                    "limit": daily_limit,
+                    "status": status,
+                    "name": name
+                }
                 continue
 
             # ---- Limit info ----
             limit = get_fund_limit(code)
             status = limit.get("subscription_status")
             daily_limit = limit.get("daily_limit")
+
+            current_limits[code] = {
+                "limit": daily_limit,
+                "status": status,
+                "name": name
+            }
 
             # ---- Money from investment list ----
             money = code_to_amount.get(code, 0)
@@ -417,7 +459,7 @@ def generate_funds_json(refresh_cache=False):
                 fund_record[f"{label}_Calmar"] = p.get("calmar")
                 fund_record[f"{label}_Sharpe"] = p.get("sharpe")
 
-            # ---- QQQ comparison (new feature) ----
+            # ---- QQQ comparison ----
             if qqq_df is not None:
                 try:
                     nav_ret = nav_df.copy()
@@ -435,7 +477,6 @@ def generate_funds_json(refresh_cache=False):
 
                     if period_metrics:
                         fund_record.update(period_metrics)
-                        # Overall metrics
                         merged_full = pd.merge(
                             nav_ret,
                             qqq_df,
@@ -516,6 +557,73 @@ def generate_funds_json(refresh_cache=False):
     with open(SCORE_JSON, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"\n✅ JSON saved to {SCORE_JSON}")
+
+    current_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+    skip_comparison = (old_date is not None and old_date == current_date)
+
+    if skip_comparison:
+        print("Old funds.json is from today, skipping limit comparison (no daily change).")
+    else:
+        new_changes = []
+        for code, curr in current_limits.items():
+            old = old_limits.get(code)
+            if old is None:
+                continue
+            old_limit = old.get("limit")
+            new_limit = curr["limit"]
+            old_status = old.get("status")
+            new_status = curr["status"]
+            if old_status != "限大额" and old_status != "开放申购":
+                old_limit = 0
+            if new_status != "限大额" and new_status != "开放申购":
+                new_limit = 0
+            if old_limit != new_limit:
+                new_changes.append({
+                    "code": code,
+                    "name": curr["name"],
+                    "old_limit": old_limit,
+                    "new_limit": new_limit,
+                    "change_date": end_date_str
+                })
+
+        all_changes = []
+        if os.path.exists(LIMIT_CHANGES_JSON):
+            try:
+                with open(LIMIT_CHANGES_JSON, 'r', encoding='utf-8') as f:
+                    existing = json.load(f)
+                    all_changes = existing.get("changes", [])
+            except Exception as e:
+                print(f"Could not read existing {LIMIT_CHANGES_JSON}: {e}")
+
+        all_changes.extend(new_changes)
+
+        cutoff_date = (datetime.strptime(end_date_str, "%Y-%m-%d") - timedelta(days=30)).date()
+        filtered = []
+        for item in all_changes:
+            change_date_str = item.get("change_date")
+            if change_date_str is None:
+                item["change_date"] = end_date_str
+                change_date_str = end_date_str
+            try:
+                item_date = datetime.strptime(change_date_str, "%Y-%m-%d").date()
+                if item_date >= cutoff_date:
+                    filtered.append(item)
+            except ValueError:
+                print(f"Warning: invalid change_date format: {change_date_str}, keeping.")
+                filtered.append(item)  
+
+        filtered.sort(key=lambda x: x.get("change_date", ""), reverse=True)
+
+        change_output = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "changes": filtered
+        }
+        with open(LIMIT_CHANGES_JSON, "w", encoding="utf-8") as f:
+            json.dump(change_output, f, ensure_ascii=False, indent=2)
+        if new_changes:
+            print(f"✅ Limit changes saved to {LIMIT_CHANGES_JSON} (total {len(filtered)} recent changes, {len(new_changes)} new)")
+        else:
+            print(f"✅ {LIMIT_CHANGES_JSON} updated with recent changes (no new changes).")
 
     if results:
         best = results[0]
