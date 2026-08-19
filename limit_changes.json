@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-08-19T09:02:48.750572+00:00",
+  "changes": [
+    {
+      "code": "539001",
+      "name": "建信纳斯达克100指数(QDII)A人民币",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-08-19"
+    },
+    {
+      "code": "160213",
+      "name": "国泰纳斯达克100指数",
+      "old_limit": 0,
+      "new_limit": 50.0,
+      "change_date": "2026-08-19"
+    },
+    {
+      "code": "012752",
+      "name": "建信纳斯达克100指数(QDII)C人民币",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-08-19"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 5000.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-08-19"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 5000.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-08-19"
+    },
+    {
+      "code": "023422",
+      "name": "建信纳斯达克100指数(QDII)D人民币",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-08-19"
+    }
+  ]
+}
