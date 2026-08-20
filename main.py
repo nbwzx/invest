@@ -20,17 +20,17 @@ fund_codes = [
     "016453", "016452", "019305", "017641", "019173", "019172",
     "018147", "539002", "539001", "000043", "022664", "014978",
     "040046", "006479", "270042", "096001", "008401", "008971",
-    "000834", "019736", "015202", "020712", "020713",
+    "000834", "019736", "015202", "020712", "020713", "160213",
     "001668", "012752", "018967", "018966", "017437", "017436",
     "501312", "017204"
 ]
 
 investment_amounts = [
-    10, 10, 10, 100, 10, 10,
     10, 10, 10, 10, 10, 10,
-    10, 100, 10, 10, 10, 10,
+    10, 10, 10, 10, 10, 10,
+    10, 10, 0, 10, 10, 10,
     10, 5, 5, 10, 10, 10,
-    10, 10, 0, 10, 10,
+    10, 10, 0, 10, 10, 50,
     0, 0, 0, 0, 0, 0,
     0, 0
 ]
@@ -301,6 +301,19 @@ def compute_period_metrics(fund_ret_df, qqq_df, start_date, end_date, label):
         f"{label}_CommonDays": len(merged),
     }
 
+def adjust_for_dividends(nav_series, inc_series, threshold=1.05):
+    nav = np.asarray(nav_series, dtype=float)
+    if len(nav) < 2:
+        return nav_series.copy()
+    cum_factor = 1.0
+    adjusted = nav.copy()
+    for i in range(1, len(nav)):
+        if inc_series[i] != "--" and nav[i-1] / nav[i] * (1 + inc_series[i] / 100) > threshold:
+            cum_factor *= (nav[i-1] / nav[i])
+        adjusted[i] = nav[i] * cum_factor
+    adjusted[0] = nav[0]
+
+    return adjusted
 
 # ------------------------------------------------------------------
 # 7. Main JSON generation (renamed to match base)
@@ -372,7 +385,6 @@ def generate_funds_json(refresh_cache=False):
     for idx, (_, row) in enumerate(funds.iterrows()):
         code = row["基金代码"]
         name = row["基金简称"]
-
         try:
             nav_df = call_with_retry(ef.fund.get_quote_history, code)
             if nav_df is None or nav_df.empty:
@@ -387,6 +399,7 @@ def generate_funds_json(refresh_cache=False):
                 )
                 continue
             nav_df["单位净值"] = pd.to_numeric(nav_df["单位净值"], errors='coerce')
+            nav_df["单位净值"] = adjust_for_dividends(nav_df["单位净值"].values, nav_df["涨跌幅"].values)
 
             # ---- Period statistics ----
             period_data = {}
