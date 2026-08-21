@@ -1,6 +1,48 @@
 {
-  "generated_at": "2026-08-20T01:02:54.603788+00:00",
+  "generated_at": "2026-08-21T01:06:22.234031+00:00",
   "changes": [
+    {
+      "code": "050020",
+      "name": "博时抗通胀增强回报",
+      "old_limit": 1000000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-08-21"
+    },
+    {
+      "code": "006373",
+      "name": "国富全球科技互联混合(QDII)人民币A",
+      "old_limit": 200.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-21"
+    },
+    {
+      "code": "006555",
+      "name": "浦银全球智能科技(QDII)A",
+      "old_limit": 3000.0,
+      "new_limit": 0,
+      "change_date": "2026-08-21"
+    },
+    {
+      "code": "080006",
+      "name": "长盛环球行业混合(QDII)A",
+      "old_limit": 1000000.0,
+      "new_limit": 500000.0,
+      "change_date": "2026-08-21"
+    },
+    {
+      "code": "014002",
+      "name": "浦银全球智能科技(QDII)C",
+      "old_limit": 3000.0,
+      "new_limit": 0,
+      "change_date": "2026-08-21"
+    },
+    {
+      "code": "021842",
+      "name": "国富全球科技互联混合(QDII)人民币C",
+      "old_limit": 200.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-21"
+    },
     {
       "code": "539001",
       "name": "建信纳斯达克100指数(QDII)A人民币",
