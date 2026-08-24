@@ -175,7 +175,7 @@ def period_stats(nav_df, end_date, days):
         vol_annual = np.std(returns, ddof=1) * np.sqrt(252)
     else:
         vol_annual = np.nan
-    calmar = cum_ret / mdd if mdd != 0 else (float("inf") if cum_ret > 0 else 0.0)
+    calmar = cum_ret / mdd if mdd != 0 else (1000 if cum_ret > 0 else 0.0)
     return cum_ret, ann_ret, vol_annual, mdd, calmar
 
 
