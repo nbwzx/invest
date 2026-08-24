@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T01:05:10.547285+00:00",
+  "generated_at": "2026-08-24T01:17:35.178921+00:00",
   "funds": [
     {
       "Code": "019454",
@@ -3322,7 +3322,7 @@
       "1M_AnnReturn": 0.3071622960174669,
       "1M_Volatility": 0.10109685455625979,
       "1M_MaxDrawdown": 0.0,
-      "1M_Calmar": Infinity,
+      "1M_Calmar": 1000,
       "1M_Sharpe": 2.7415521208251614,
       "3M_Return": null,
       "3M_AnnReturn": null,
@@ -3454,7 +3454,7 @@
       "1M_AnnReturn": 0.3040131039152869,
       "1M_Volatility": 0.10111435860555158,
       "1M_MaxDrawdown": 0.0,
-      "1M_Calmar": Infinity,
+      "1M_Calmar": 1000,
       "1M_Sharpe": 2.7099326712264036,
       "3M_Return": null,
       "3M_AnnReturn": null,
