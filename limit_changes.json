@@ -1,6 +1,20 @@
 {
-  "generated_at": "2026-08-24T06:33:57.669063+00:00",
+  "generated_at": "2026-08-25T01:04:11.667652+00:00",
   "changes": [
+    {
+      "code": "020515",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-08-25"
+    },
+    {
+      "code": "020516",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-08-25"
+    },
     {
       "code": "486002",
       "name": "工银全球精选股票(QDII)",
