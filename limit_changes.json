@@ -1,6 +1,55 @@
 {
-  "generated_at": "2026-08-26T01:06:21.647541+00:00",
+  "generated_at": "2026-08-27T05:13:27.106186+00:00",
   "changes": [
+    {
+      "code": "539003",
+      "name": "建信富时100指数(QDII)A人民币",
+      "old_limit": 5000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-27"
+    },
+    {
+      "code": "008706",
+      "name": "建信富时100指数(QDII)C人民币",
+      "old_limit": 5000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-27"
+    },
+    {
+      "code": "539002",
+      "name": "建信新兴市场混合(QDII)A",
+      "old_limit": 500.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-27"
+    },
+    {
+      "code": "011420",
+      "name": "广发全球科技三个月定开混合(QDII)人民币A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-08-27"
+    },
+    {
+      "code": "011422",
+      "name": "广发全球科技三个月定开混合(QDII)人民币C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-08-27"
+    },
+    {
+      "code": "018147",
+      "name": "建信新兴市场混合(QDII)C",
+      "old_limit": 500.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-27"
+    },
+    {
+      "code": "023373",
+      "name": "建信富时100指数(QDII)D人民币",
+      "old_limit": 5000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-08-27"
+    },
     {
       "code": "016199",
       "name": "汇添富全球汽车产业升级混合(QDII)人民币A",
