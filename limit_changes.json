@@ -1,6 +1,139 @@
 {
-  "generated_at": "2026-09-01T02:06:42.993021+00:00",
+  "generated_at": "2026-09-02T01:57:53.383894+00:00",
   "changes": [
+    {
+      "code": "019454",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "019455",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "022681",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)I",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "519981",
+      "name": "长信标普100等权重指数人民币",
+      "old_limit": 10.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "002891",
+      "name": "华夏移动互联混合人民币",
+      "old_limit": 200.0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "007721",
+      "name": "天弘标普500发起(QDII-FOF)A",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "009225",
+      "name": "天弘中证中美互联网(QDII)A",
+      "old_limit": 100.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "009226",
+      "name": "天弘中证中美互联网(QDII)C",
+      "old_limit": 100.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "164212",
+      "name": "天弘全球新能源汽车股票(QDII-LOF)A",
+      "old_limit": 100.0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "018044",
+      "name": "天弘纳斯达克100指数发起(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "018043",
+      "name": "天弘纳斯达克100指数发起(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "007722",
+      "name": "天弘标普500发起(QDII-FOF)C",
+      "old_limit": 0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "016664",
+      "name": "天弘全球高端制造混合(QDII)A",
+      "old_limit": 100.0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "018967",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币C",
+      "old_limit": 10.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "016665",
+      "name": "天弘全球高端制造混合(QDII)C",
+      "old_limit": 100.0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "019155",
+      "name": "易方达全球配置混合(QDII)A(人民币)",
+      "old_limit": 100.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "019156",
+      "name": "易方达全球配置混合(QDII)C(人民币)",
+      "old_limit": 100.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "018966",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币A",
+      "old_limit": 10.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-02"
+    },
+    {
+      "code": "021773",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币E",
+      "old_limit": 10.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-02"
+    },
     {
       "code": "160213",
       "name": "国泰纳斯达克100指数",
