@@ -1,6 +1,90 @@
 {
-  "generated_at": "2026-09-02T01:57:53.383894+00:00",
+  "generated_at": "2026-09-03T01:50:27.569207+00:00",
   "changes": [
+    {
+      "code": "001668",
+      "name": "汇添富全球移动互联混合(QDII)人民币A",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "008253",
+      "name": "华宝致远混合(QDII)A",
+      "old_limit": 1000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "008254",
+      "name": "华宝致远混合(QDII)C",
+      "old_limit": 1000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "008763",
+      "name": "天弘越南市场股票发起(QDII)A",
+      "old_limit": 0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "008764",
+      "name": "天弘越南市场股票发起(QDII)C",
+      "old_limit": 0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "015202",
+      "name": "汇添富全球移动互联混合(QDII)人民币C",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "016823",
+      "name": "天弘全球新能源汽车股票(QDII-LOF)C",
+      "old_limit": 100.0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "017436",
+      "name": "华宝纳斯达克精选股票发起式(QDII)A",
+      "old_limit": 1000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "017437",
+      "name": "华宝纳斯达克精选股票发起式(QDII)C",
+      "old_limit": 1000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "018967",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币C",
+      "old_limit": 10000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "018966",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币A",
+      "old_limit": 10000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
+    {
+      "code": "021773",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币E",
+      "old_limit": 10000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-03"
+    },
     {
       "code": "019454",
       "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
