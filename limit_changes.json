@@ -1,6 +1,69 @@
 {
-  "generated_at": "2026-09-03T01:50:27.569207+00:00",
+  "generated_at": "2026-09-04T01:51:16.590621+00:00",
   "changes": [
+    {
+      "code": "202801",
+      "name": "南方全球精选配置股票(QDII-FOF)A",
+      "old_limit": 100000000000.0,
+      "new_limit": 1000000.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "000614",
+      "name": "华安德国(DAX)联接(QDII)A",
+      "old_limit": 300.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "015016",
+      "name": "华安德国(DAX)联接(QDII)C",
+      "old_limit": 300.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "018967",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币C",
+      "old_limit": 2000.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "018966",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币A",
+      "old_limit": 2000.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "021540",
+      "name": "华安法国CAC40ETF发起式联接(QDII)C",
+      "old_limit": 5000.0,
+      "new_limit": 100000.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "021539",
+      "name": "华安法国CAC40ETF发起式联接(QDII)A",
+      "old_limit": 5000.0,
+      "new_limit": 100000.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "021773",
+      "name": "汇添富纳斯达克100ETF发起式联接(QDII)人民币E",
+      "old_limit": 2000.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-04"
+    },
+    {
+      "code": "023591",
+      "name": "南方全球精选配置股票(QDII-FOF)C",
+      "old_limit": 100000000000.0,
+      "new_limit": 1000000.0,
+      "change_date": "2026-09-04"
+    },
     {
       "code": "001668",
       "name": "汇添富全球移动互联混合(QDII)人民币A",
