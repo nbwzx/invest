@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T02:54:08.183995+00:00",
+  "generated_at": "2026-09-08T03:13:21.291303+00:00",
   "funds": [
     {
       "Code": "019454",
@@ -9208,7 +9208,7 @@
     {
       "Code": "160213",
       "Name": "国泰纳斯达克100指数",
-      "Money": 50,
+      "Money": 100,
       "Limit": 100.0,
       "PurchaseStatus": "限大额",
       "Fee": "0.15",
@@ -11323,7 +11323,7 @@
     {
       "Code": "018043",
       "Name": "天弘纳斯达克100指数发起(QDII)A",
-      "Money": 0,
+      "Money": 100,
       "Limit": 100.0,
       "PurchaseStatus": "限大额",
       "Fee": "0.1",
@@ -12250,7 +12250,7 @@
     {
       "Code": "018044",
       "Name": "天弘纳斯达克100指数发起(QDII)C",
-      "Money": 0,
+      "Money": 100,
       "Limit": 100.0,
       "PurchaseStatus": "限大额",
       "Fee": "0.0",
@@ -17194,7 +17194,7 @@
     {
       "Code": "007721",
       "Name": "天弘标普500发起(QDII-FOF)A",
-      "Money": 0,
+      "Money": 100,
       "Limit": 100.0,
       "PurchaseStatus": "限大额",
       "Fee": "0.1",
@@ -17368,7 +17368,7 @@
     {
       "Code": "007722",
       "Name": "天弘标普500发起(QDII-FOF)C",
-      "Money": 0,
+      "Money": 100,
       "Limit": 100.0,
       "PurchaseStatus": "限大额",
       "Fee": "0.0",
