@@ -1,6 +1,55 @@
 {
-  "generated_at": "2026-09-04T01:51:16.590621+00:00",
+  "generated_at": "2026-09-08T02:54:08.225437+00:00",
   "changes": [
+    {
+      "code": "096001",
+      "name": "大成标普500等权重指数(QDII)A人民币",
+      "old_limit": 10.0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-08"
+    },
+    {
+      "code": "539003",
+      "name": "建信富时100指数(QDII)A人民币",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-08"
+    },
+    {
+      "code": "008706",
+      "name": "建信富时100指数(QDII)C人民币",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-08"
+    },
+    {
+      "code": "008401",
+      "name": "大成标普500等权重指数(QDII)C人民币",
+      "old_limit": 10.0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-08"
+    },
+    {
+      "code": "019736",
+      "name": "宝盈纳斯达克100指数发起(QDII)A人民币",
+      "old_limit": 10.0,
+      "new_limit": 200.0,
+      "change_date": "2026-09-08"
+    },
+    {
+      "code": "019737",
+      "name": "宝盈纳斯达克100指数发起(QDII)C人民币",
+      "old_limit": 10.0,
+      "new_limit": 200.0,
+      "change_date": "2026-09-08"
+    },
+    {
+      "code": "023373",
+      "name": "建信富时100指数(QDII)D人民币",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-08"
+    },
     {
       "code": "202801",
       "name": "南方全球精选配置股票(QDII-FOF)A",
