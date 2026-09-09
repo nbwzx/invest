@@ -1,6 +1,97 @@
 {
-  "generated_at": "2026-09-08T02:54:08.225437+00:00",
+  "generated_at": "2026-09-09T02:53:22.740856+00:00",
   "changes": [
+    {
+      "code": "007280",
+      "name": "摩根日本精选股票(QDII)A",
+      "old_limit": 500.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "019449",
+      "name": "摩根日本精选股票(QDII)C",
+      "old_limit": 500.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "378006",
+      "name": "摩根全球新兴市场混合(QDII)",
+      "old_limit": 1000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "378546",
+      "name": "摩根全球天然资源混合(QDII)A",
+      "old_limit": 1000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "006282",
+      "name": "摩根欧洲动力策略股票(QDII)A",
+      "old_limit": 500.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 1000000.0,
+      "new_limit": 100000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 1000000.0,
+      "new_limit": 100000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "019450",
+      "name": "摩根欧洲动力策略股票(QDII)C",
+      "old_limit": 500.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "019578",
+      "name": "摩根全球天然资源混合(QDII)C",
+      "old_limit": 1000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "019441",
+      "name": "万家纳斯达克100指数发起式(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 5000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "019442",
+      "name": "万家纳斯达克100指数发起式(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 5000.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "020515",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-09"
+    },
+    {
+      "code": "020516",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 500.0,
+      "change_date": "2026-09-09"
+    },
     {
       "code": "096001",
       "name": "大成标普500等权重指数(QDII)A人民币",
