@@ -1,6 +1,27 @@
 {
-  "generated_at": "2026-09-10T02:55:16.853651+00:00",
+  "generated_at": "2026-09-11T02:48:41.357406+00:00",
   "changes": [
+    {
+      "code": "519981",
+      "name": "长信标普100等权重指数人民币",
+      "old_limit": 10000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-11"
+    },
+    {
+      "code": "270042",
+      "name": "广发纳斯达克100ETF联接人民币(QDII)A",
+      "old_limit": 5.0,
+      "new_limit": 2.0,
+      "change_date": "2026-09-11"
+    },
+    {
+      "code": "006479",
+      "name": "广发纳斯达克100ETF联接人民币(QDII)C",
+      "old_limit": 5.0,
+      "new_limit": 2.0,
+      "change_date": "2026-09-11"
+    },
     {
       "code": "019441",
       "name": "万家纳斯达克100指数发起式(QDII)A",
