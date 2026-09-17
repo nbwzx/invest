@@ -1,6 +1,27 @@
 {
-  "generated_at": "2026-09-16T03:09:26.313768+00:00",
+  "generated_at": "2026-09-17T03:12:48.604460+00:00",
   "changes": [
+    {
+      "code": "017093",
+      "name": "景顺长城纳斯达克科技ETF联接(QDII)C人民币",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-17"
+    },
+    {
+      "code": "017091",
+      "name": "景顺长城纳斯达克科技ETF联接(QDII)A人民币",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-17"
+    },
+    {
+      "code": "019118",
+      "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-09-17"
+    },
     {
       "code": "006105",
       "name": "宏利印度股票(QDII)A",
