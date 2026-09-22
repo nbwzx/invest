@@ -1,6 +1,62 @@
 {
-  "generated_at": "2026-09-21T03:08:06.994511+00:00",
+  "generated_at": "2026-09-22T03:07:36.281083+00:00",
   "changes": [
+    {
+      "code": "019454",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
+      "old_limit": 100.0,
+      "new_limit": 0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "019455",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)C",
+      "old_limit": 100.0,
+      "new_limit": 0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "022681",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)I",
+      "old_limit": 100.0,
+      "new_limit": 0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "501226",
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "old_limit": 500000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "018036",
+      "name": "长城全球新能源车股票发起式(QDII)C",
+      "old_limit": 10000.0,
+      "new_limit": 2000.0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "019524",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "019525",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-09-22"
+    },
+    {
+      "code": "022664",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)I",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-09-22"
+    },
     {
       "code": "007280",
       "name": "摩根日本精选股票(QDII)A",
