@@ -1,6 +1,118 @@
 {
-  "generated_at": "2026-09-22T03:07:36.281083+00:00",
+  "generated_at": "2026-09-23T03:07:38.380941+00:00",
   "changes": [
+    {
+      "code": "019454",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
+      "old_limit": 0,
+      "new_limit": 5.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "019455",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)C",
+      "old_limit": 0,
+      "new_limit": 5.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "022681",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)I",
+      "old_limit": 0,
+      "new_limit": 5.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "163813",
+      "name": "中银全球策略(QDII-FOF)A",
+      "old_limit": 5000000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "006105",
+      "name": "宏利印度股票(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "017093",
+      "name": "景顺长城纳斯达克科技ETF联接(QDII)C人民币",
+      "old_limit": 100.0,
+      "new_limit": 0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "017091",
+      "name": "景顺长城纳斯达克科技ETF联接(QDII)A人民币",
+      "old_limit": 100.0,
+      "new_limit": 0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "019118",
+      "name": "景顺长城纳斯达克科技ETF联接(QDII)E人民币",
+      "old_limit": 100.0,
+      "new_limit": 0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "019441",
+      "name": "万家纳斯达克100指数发起式(QDII)A",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "019442",
+      "name": "万家纳斯达克100指数发起式(QDII)C",
+      "old_limit": 100.0,
+      "new_limit": 10.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "019524",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)A",
+      "old_limit": 0,
+      "new_limit": 5.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "019525",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)C",
+      "old_limit": 0,
+      "new_limit": 5.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "020957",
+      "name": "中银全球策略(QDII-FOF)C",
+      "old_limit": 5000000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "022664",
+      "name": "华泰柏瑞纳斯达克100ETF发起式联接(QDII)I",
+      "old_limit": 0,
+      "new_limit": 5.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "027206",
+      "name": "广发优势企业混合(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-09-23"
+    },
+    {
+      "code": "027205",
+      "name": "广发优势企业混合(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-09-23"
+    },
     {
       "code": "019454",
       "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
