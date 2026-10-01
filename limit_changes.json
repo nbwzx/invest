@@ -1,6 +1,34 @@
 {
-  "generated_at": "2026-09-30T03:49:08.055045+00:00",
+  "generated_at": "2026-10-01T03:56:04.112465+00:00",
   "changes": [
+    {
+      "code": "163813",
+      "name": "中银全球策略(QDII-FOF)A",
+      "old_limit": 100.0,
+      "new_limit": 5000000.0,
+      "change_date": "2026-10-01"
+    },
+    {
+      "code": "080006",
+      "name": "长盛环球行业混合(QDII)A",
+      "old_limit": 0,
+      "new_limit": 500000.0,
+      "change_date": "2026-10-01"
+    },
+    {
+      "code": "020957",
+      "name": "中银全球策略(QDII-FOF)C",
+      "old_limit": 100.0,
+      "new_limit": 5000000.0,
+      "change_date": "2026-10-01"
+    },
+    {
+      "code": "028491",
+      "name": "长盛环球行业混合(QDII)C",
+      "old_limit": 0,
+      "new_limit": 500000.0,
+      "change_date": "2026-10-01"
+    },
     {
       "code": "016988",
       "name": "景顺长城大中华混合(QDII)C人民币",
