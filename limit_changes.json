@@ -1,6 +1,69 @@
 {
-  "generated_at": "2026-10-08T04:19:52.740348+00:00",
+  "generated_at": "2026-10-09T04:23:53.689936+00:00",
   "changes": [
+    {
+      "code": "019454",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
+      "old_limit": 5.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "019455",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)C",
+      "old_limit": 5.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "022681",
+      "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)I",
+      "old_limit": 5.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "377016",
+      "name": "摩根亚太优势混合(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "016988",
+      "name": "景顺长城大中华混合(QDII)C人民币",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "019641",
+      "name": "摩根亚太优势混合(QDII)C",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
+    {
+      "code": "262001",
+      "name": "景顺长城大中华混合(QDII)A人民币",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-10-09"
+    },
     {
       "code": "080006",
       "name": "长盛环球行业混合(QDII)A",
@@ -882,55 +945,6 @@
       "old_limit": 10.0,
       "new_limit": 500.0,
       "change_date": "2026-09-09"
-    },
-    {
-      "code": "096001",
-      "name": "大成标普500等权重指数(QDII)A人民币",
-      "old_limit": 10.0,
-      "new_limit": 100.0,
-      "change_date": "2026-09-08"
-    },
-    {
-      "code": "539003",
-      "name": "建信富时100指数(QDII)A人民币",
-      "old_limit": 100.0,
-      "new_limit": 10.0,
-      "change_date": "2026-09-08"
-    },
-    {
-      "code": "008706",
-      "name": "建信富时100指数(QDII)C人民币",
-      "old_limit": 100.0,
-      "new_limit": 10.0,
-      "change_date": "2026-09-08"
-    },
-    {
-      "code": "008401",
-      "name": "大成标普500等权重指数(QDII)C人民币",
-      "old_limit": 10.0,
-      "new_limit": 100.0,
-      "change_date": "2026-09-08"
-    },
-    {
-      "code": "019736",
-      "name": "宝盈纳斯达克100指数发起(QDII)A人民币",
-      "old_limit": 10.0,
-      "new_limit": 200.0,
-      "change_date": "2026-09-08"
-    },
-    {
-      "code": "019737",
-      "name": "宝盈纳斯达克100指数发起(QDII)C人民币",
-      "old_limit": 10.0,
-      "new_limit": 200.0,
-      "change_date": "2026-09-08"
-    },
-    {
-      "code": "023373",
-      "name": "建信富时100指数(QDII)D人民币",
-      "old_limit": 100.0,
-      "new_limit": 10.0,
-      "change_date": "2026-09-08"
     }
   ]
 }
