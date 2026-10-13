@@ -1,6 +1,181 @@
 {
-  "generated_at": "2026-10-12T04:08:17.851069+00:00",
+  "generated_at": "2026-10-13T05:17:42.160479+00:00",
   "changes": [
+    {
+      "code": "007280",
+      "name": "摩根日本精选股票(QDII)A",
+      "old_limit": 0,
+      "new_limit": 2000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "019449",
+      "name": "摩根日本精选股票(QDII)C",
+      "old_limit": 0,
+      "new_limit": 2000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020712",
+      "name": "华安三菱日联日经225ETF发起式联接(QDII)A",
+      "old_limit": 0,
+      "new_limit": 10.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020713",
+      "name": "华安三菱日联日经225ETF发起式联接(QDII)C",
+      "old_limit": 0,
+      "new_limit": 10.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "161620",
+      "name": "融通核心价值混合A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "163813",
+      "name": "中银全球策略(QDII-FOF)A",
+      "old_limit": 0,
+      "new_limit": 5000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "270042",
+      "name": "广发纳斯达克100ETF联接人民币(QDII)A",
+      "old_limit": 0,
+      "new_limit": 10.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "001668",
+      "name": "汇添富全球移动互联混合(QDII)人民币A",
+      "old_limit": 0,
+      "new_limit": 300.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "006479",
+      "name": "广发纳斯达克100ETF联接人民币(QDII)C",
+      "old_limit": 0,
+      "new_limit": 10.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "014127",
+      "name": "融通核心价值混合C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "015202",
+      "name": "汇添富全球移动互联混合(QDII)人民币C",
+      "old_limit": 0,
+      "new_limit": 300.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "017970",
+      "name": "摩根海外稳健配置混合(QDII-FOF)人民币A",
+      "old_limit": 0,
+      "new_limit": 100000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020512",
+      "name": "摩根海外稳健配置混合(QDII-FOF)人民币C",
+      "old_limit": 0,
+      "new_limit": 100000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020515",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
+      "old_limit": 500.0,
+      "new_limit": 0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020516",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
+      "old_limit": 500.0,
+      "new_limit": 0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "019075",
+      "name": "嘉实全球产业精选混合发起式(QDII)人民币",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "165513",
+      "name": "中信保诚全球商品(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020969",
+      "name": "中信保诚全球商品(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "020957",
+      "name": "中银全球策略(QDII-FOF)C",
+      "old_limit": 0,
+      "new_limit": 5000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "021189",
+      "name": "南方亚太精选ETF联接(QDII)A",
+      "old_limit": 0,
+      "new_limit": 20000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "021190",
+      "name": "南方亚太精选ETF联接(QDII)C",
+      "old_limit": 0,
+      "new_limit": 20000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "005699",
+      "name": "工银新经济混合(QDII)人民币A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
+    {
+      "code": "025403",
+      "name": "工银新经济混合(QDII)人民币C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-13"
+    },
     {
       "code": "019454",
       "name": "华泰柏瑞中韩半导体ETF发起式联接(QDII)A",
@@ -987,13 +1162,6 @@
       "old_limit": 0,
       "new_limit": 100000.0,
       "change_date": "2026-09-15"
-    },
-    {
-      "code": "006105",
-      "name": "宏利印度股票(QDII)A",
-      "old_limit": 100000.0,
-      "new_limit": 0,
-      "change_date": "2026-09-12"
     }
   ]
 }
