@@ -1,6 +1,62 @@
 {
-  "generated_at": "2026-10-13T05:17:42.160479+00:00",
+  "generated_at": "2026-10-14T03:23:02.887287+00:00",
   "changes": [
+    {
+      "code": "080006",
+      "name": "长盛环球行业混合(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "016701",
+      "name": "银华海外数字经济量化选股混合发起式(QDII)A",
+      "old_limit": 1000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "016702",
+      "name": "银华海外数字经济量化选股混合发起式(QDII)C",
+      "old_limit": 1000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "019547",
+      "name": "招商纳斯达克100ETF发起式联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "019548",
+      "name": "招商纳斯达克100ETF发起式联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "020515",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
+      "old_limit": 0,
+      "new_limit": 500.0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "020516",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
+      "old_limit": 0,
+      "new_limit": 500.0,
+      "change_date": "2026-10-14"
+    },
+    {
+      "code": "028491",
+      "name": "长盛环球行业混合(QDII)C",
+      "old_limit": 100000.0,
+      "new_limit": 1000.0,
+      "change_date": "2026-10-14"
+    },
     {
       "code": "007280",
       "name": "摩根日本精选股票(QDII)A",
