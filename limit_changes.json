@@ -1,6 +1,20 @@
 {
-  "generated_at": "2026-10-14T03:23:02.887287+00:00",
+  "generated_at": "2026-10-15T03:01:25.565405+00:00",
   "changes": [
+    {
+      "code": "270042",
+      "name": "广发纳斯达克100ETF联接人民币(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-10-15"
+    },
+    {
+      "code": "006479",
+      "name": "广发纳斯达克100ETF联接人民币(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-10-15"
+    },
     {
       "code": "080006",
       "name": "长盛环球行业混合(QDII)A",
