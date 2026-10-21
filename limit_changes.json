@@ -1,6 +1,83 @@
 {
-  "generated_at": "2026-10-20T03:14:38.866875+00:00",
+  "generated_at": "2026-10-21T03:11:10.069970+00:00",
   "changes": [
+    {
+      "code": "001668",
+      "name": "汇添富全球移动互联混合(QDII)人民币A",
+      "old_limit": 300.0,
+      "new_limit": 500.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "006105",
+      "name": "宏利印度股票(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "014978",
+      "name": "华安纳斯达克100ETF联接(QDII)C",
+      "old_limit": 5.0,
+      "new_limit": 0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "015202",
+      "name": "汇添富全球移动互联混合(QDII)人民币C",
+      "old_limit": 300.0,
+      "new_limit": 500.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "040046",
+      "name": "华安纳斯达克100ETF联接(QDII)A",
+      "old_limit": 5.0,
+      "new_limit": 0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "501226",
+      "name": "长城全球新能源车股票发起式(QDII)A",
+      "old_limit": 2000.0,
+      "new_limit": 500000.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "018036",
+      "name": "长城全球新能源车股票发起式(QDII)C",
+      "old_limit": 2000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "019441",
+      "name": "万家纳斯达克100指数发起式(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 5.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "019442",
+      "name": "万家纳斯达克100指数发起式(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 5.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "270023",
+      "name": "广发全球精选股票(QDII)人民币A",
+      "old_limit": 10000.0,
+      "new_limit": 20000.0,
+      "change_date": "2026-10-21"
+    },
+    {
+      "code": "021277",
+      "name": "广发全球精选股票(QDII)人民币C",
+      "old_limit": 10000.0,
+      "new_limit": 20000.0,
+      "change_date": "2026-10-21"
+    },
     {
       "code": "110011",
       "name": "易方达优质精选混合(QDII)",
