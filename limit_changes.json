@@ -1,6 +1,55 @@
 {
-  "generated_at": "2026-10-26T03:01:22.004443+00:00",
+  "generated_at": "2026-10-27T03:34:01.677296+00:00",
   "changes": [
+    {
+      "code": "000934",
+      "name": "国富大中华精选混合",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-27"
+    },
+    {
+      "code": "016988",
+      "name": "景顺长城大中华混合(QDII)C人民币",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-27"
+    },
+    {
+      "code": "016701",
+      "name": "银华海外数字经济量化选股混合发起式(QDII)A",
+      "old_limit": 10000.0,
+      "new_limit": 5000.0,
+      "change_date": "2026-10-27"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100000.0,
+      "change_date": "2026-10-27"
+    },
+    {
+      "code": "016702",
+      "name": "银华海外数字经济量化选股混合发起式(QDII)C",
+      "old_limit": 10000.0,
+      "new_limit": 5000.0,
+      "change_date": "2026-10-27"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100000.0,
+      "change_date": "2026-10-27"
+    },
+    {
+      "code": "262001",
+      "name": "景顺长城大中华混合(QDII)A人民币",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-10-27"
+    },
     {
       "code": "000934",
       "name": "国富大中华精选混合",
