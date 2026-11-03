@@ -1,6 +1,90 @@
 {
-  "generated_at": "2026-11-02T04:09:54.470999+00:00",
+  "generated_at": "2026-11-03T05:11:36.719060+00:00",
   "changes": [
+    {
+      "code": "007280",
+      "name": "摩根日本精选股票(QDII)A",
+      "old_limit": 2000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "019449",
+      "name": "摩根日本精选股票(QDII)C",
+      "old_limit": 2000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "020712",
+      "name": "华安三菱日联日经225ETF发起式联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "020713",
+      "name": "华安三菱日联日经225ETF发起式联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "165513",
+      "name": "中信保诚全球商品(QDII)A",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "020969",
+      "name": "中信保诚全球商品(QDII)C",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "021189",
+      "name": "南方亚太精选ETF联接(QDII)A",
+      "old_limit": 20000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "021190",
+      "name": "南方亚太精选ETF联接(QDII)C",
+      "old_limit": 20000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "005699",
+      "name": "工银新经济混合(QDII)人民币A",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
+    {
+      "code": "025403",
+      "name": "工银新经济混合(QDII)人民币C",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-03"
+    },
     {
       "code": "016701",
       "name": "银华海外数字经济量化选股混合发起式(QDII)A",
