@@ -1,6 +1,34 @@
 {
-  "generated_at": "2026-11-05T04:57:46.328213+00:00",
+  "generated_at": "2026-11-06T04:56:52.918328+00:00",
   "changes": [
+    {
+      "code": "080006",
+      "name": "长盛环球行业混合(QDII)A",
+      "old_limit": 100.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-06"
+    },
+    {
+      "code": "020515",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
+      "old_limit": 500.0,
+      "new_limit": 0,
+      "change_date": "2026-11-06"
+    },
+    {
+      "code": "020516",
+      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
+      "old_limit": 500.0,
+      "new_limit": 0,
+      "change_date": "2026-11-06"
+    },
+    {
+      "code": "028491",
+      "name": "长盛环球行业混合(QDII)C",
+      "old_limit": 100.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-06"
+    },
     {
       "code": "100055",
       "name": "富国全球科技互联网股票(QDII)A",
