@@ -1,6 +1,34 @@
 {
-  "generated_at": "2026-11-06T04:56:52.918328+00:00",
+  "generated_at": "2026-11-07T04:28:02.941132+00:00",
   "changes": [
+    {
+      "code": "006555",
+      "name": "浦银全球智能科技(QDII)A",
+      "old_limit": 1000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-07"
+    },
+    {
+      "code": "014002",
+      "name": "浦银全球智能科技(QDII)C",
+      "old_limit": 1000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-07"
+    },
+    {
+      "code": "021189",
+      "name": "南方亚太精选ETF联接(QDII)A",
+      "old_limit": 20000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-07"
+    },
+    {
+      "code": "021190",
+      "name": "南方亚太精选ETF联接(QDII)C",
+      "old_limit": 20000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-07"
+    },
     {
       "code": "080006",
       "name": "长盛环球行业混合(QDII)A",
