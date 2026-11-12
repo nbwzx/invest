@@ -1,6 +1,139 @@
 {
-  "generated_at": "2026-11-11T04:31:41.935953+00:00",
+  "generated_at": "2026-11-12T05:36:34.573257+00:00",
   "changes": [
+    {
+      "code": "161620",
+      "name": "融通核心价值混合A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "377016",
+      "name": "摩根亚太优势混合(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "378006",
+      "name": "摩根全球新兴市场混合(QDII)",
+      "old_limit": 10000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "163813",
+      "name": "中银全球策略(QDII-FOF)A",
+      "old_limit": 0,
+      "new_limit": 5000000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "003629",
+      "name": "摩根全球多元配置(QDII-FOF)人民币A",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "378546",
+      "name": "摩根全球天然资源混合(QDII)A",
+      "old_limit": 10000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "006282",
+      "name": "摩根欧洲动力策略股票(QDII)A",
+      "old_limit": 10000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "080006",
+      "name": "长盛环球行业混合(QDII)A",
+      "old_limit": 0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "014127",
+      "name": "融通核心价值混合C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "017970",
+      "name": "摩根海外稳健配置混合(QDII-FOF)人民币A",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "019450",
+      "name": "摩根欧洲动力策略股票(QDII)C",
+      "old_limit": 10000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "019495",
+      "name": "摩根富时发达市场REITs指数(QDII)人民币C",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "019578",
+      "name": "摩根全球天然资源混合(QDII)C",
+      "old_limit": 10000.0,
+      "new_limit": 100.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "019641",
+      "name": "摩根亚太优势混合(QDII)C",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "019512",
+      "name": "摩根全球多元配置(QDII-FOF)人民币C",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "005613",
+      "name": "摩根富时发达市场REITs指数(QDII)人民币A",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "020512",
+      "name": "摩根海外稳健配置混合(QDII-FOF)人民币C",
+      "old_limit": 100000.0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "020957",
+      "name": "中银全球策略(QDII-FOF)C",
+      "old_limit": 0,
+      "new_limit": 5000000.0,
+      "change_date": "2026-11-12"
+    },
+    {
+      "code": "028491",
+      "name": "长盛环球行业混合(QDII)C",
+      "old_limit": 0,
+      "new_limit": 10000.0,
+      "change_date": "2026-11-12"
+    },
     {
       "code": "161620",
       "name": "融通核心价值混合A",
