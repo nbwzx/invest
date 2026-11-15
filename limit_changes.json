@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T04:47:48.076612+00:00",
+  "generated_at": "2026-11-15T04:40:15.140344+00:00",
   "changes": [
     {
       "code": "080006",
@@ -2009,20 +2009,6 @@
       "old_limit": 1000.0,
       "new_limit": 100.0,
       "change_date": "2026-10-16"
-    },
-    {
-      "code": "270042",
-      "name": "广发纳斯达克100ETF联接人民币(QDII)A",
-      "old_limit": 10.0,
-      "new_limit": 0,
-      "change_date": "2026-10-15"
-    },
-    {
-      "code": "006479",
-      "name": "广发纳斯达克100ETF联接人民币(QDII)C",
-      "old_limit": 10.0,
-      "new_limit": 0,
-      "change_date": "2026-10-15"
     }
   ]
 }
