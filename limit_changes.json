@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T04:40:15.140344+00:00",
+  "generated_at": "2026-11-16T04:35:36.431754+00:00",
   "changes": [
     {
       "code": "080006",
@@ -1960,55 +1960,6 @@
       "old_limit": 100.0,
       "new_limit": 0,
       "change_date": "2026-10-17"
-    },
-    {
-      "code": "486002",
-      "name": "工银全球精选股票(QDII)",
-      "old_limit": 50000.0,
-      "new_limit": 100.0,
-      "change_date": "2026-10-16"
-    },
-    {
-      "code": "096001",
-      "name": "大成标普500等权重指数(QDII)A人民币",
-      "old_limit": 100.0,
-      "new_limit": 50.0,
-      "change_date": "2026-10-16"
-    },
-    {
-      "code": "080006",
-      "name": "长盛环球行业混合(QDII)A",
-      "old_limit": 1000.0,
-      "new_limit": 100.0,
-      "change_date": "2026-10-16"
-    },
-    {
-      "code": "008401",
-      "name": "大成标普500等权重指数(QDII)C人民币",
-      "old_limit": 100.0,
-      "new_limit": 50.0,
-      "change_date": "2026-10-16"
-    },
-    {
-      "code": "020515",
-      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
-      "old_limit": 500.0,
-      "new_limit": 0,
-      "change_date": "2026-10-16"
-    },
-    {
-      "code": "020516",
-      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
-      "old_limit": 500.0,
-      "new_limit": 0,
-      "change_date": "2026-10-16"
-    },
-    {
-      "code": "028491",
-      "name": "长盛环球行业混合(QDII)C",
-      "old_limit": 1000.0,
-      "new_limit": 100.0,
-      "change_date": "2026-10-16"
     }
   ]
 }
