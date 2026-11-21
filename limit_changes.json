@@ -1,6 +1,90 @@
 {
-  "generated_at": "2026-11-20T05:37:20.699944+00:00",
+  "generated_at": "2026-11-21T05:29:18.047347+00:00",
   "changes": [
+    {
+      "code": "007280",
+      "name": "摩根日本精选股票(QDII)A",
+      "old_limit": 2000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "019449",
+      "name": "摩根日本精选股票(QDII)C",
+      "old_limit": 2000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "020712",
+      "name": "华安三菱日联日经225ETF发起式联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "020713",
+      "name": "华安三菱日联日经225ETF发起式联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "017654",
+      "name": "创金合信全球芯片产业股票发起(QDII)C",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "017653",
+      "name": "创金合信全球芯片产业股票发起(QDII)A",
+      "old_limit": 100000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "165513",
+      "name": "中信保诚全球商品(QDII)A",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "020969",
+      "name": "中信保诚全球商品(QDII)C",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "021189",
+      "name": "南方亚太精选ETF联接(QDII)A",
+      "old_limit": 20000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "021190",
+      "name": "南方亚太精选ETF联接(QDII)C",
+      "old_limit": 20000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "005699",
+      "name": "工银新经济混合(QDII)人民币A",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
+    {
+      "code": "025403",
+      "name": "工银新经济混合(QDII)人民币C",
+      "old_limit": 100000000000.0,
+      "new_limit": 0,
+      "change_date": "2026-11-21"
+    },
     {
       "code": "019075",
       "name": "嘉实全球产业精选混合发起式(QDII)人民币",
@@ -686,83 +770,6 @@
       "old_limit": 500.0,
       "new_limit": 0,
       "change_date": "2026-10-23"
-    },
-    {
-      "code": "001668",
-      "name": "汇添富全球移动互联混合(QDII)人民币A",
-      "old_limit": 300.0,
-      "new_limit": 500.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "006105",
-      "name": "宏利印度股票(QDII)A",
-      "old_limit": 0,
-      "new_limit": 100000000000.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "014978",
-      "name": "华安纳斯达克100ETF联接(QDII)C",
-      "old_limit": 5.0,
-      "new_limit": 0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "015202",
-      "name": "汇添富全球移动互联混合(QDII)人民币C",
-      "old_limit": 300.0,
-      "new_limit": 500.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "040046",
-      "name": "华安纳斯达克100ETF联接(QDII)A",
-      "old_limit": 5.0,
-      "new_limit": 0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "501226",
-      "name": "长城全球新能源车股票发起式(QDII)A",
-      "old_limit": 2000.0,
-      "new_limit": 500000.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "018036",
-      "name": "长城全球新能源车股票发起式(QDII)C",
-      "old_limit": 2000.0,
-      "new_limit": 10000.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "019441",
-      "name": "万家纳斯达克100指数发起式(QDII)A",
-      "old_limit": 10.0,
-      "new_limit": 5.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "019442",
-      "name": "万家纳斯达克100指数发起式(QDII)C",
-      "old_limit": 10.0,
-      "new_limit": 5.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "270023",
-      "name": "广发全球精选股票(QDII)人民币A",
-      "old_limit": 10000.0,
-      "new_limit": 20000.0,
-      "change_date": "2026-10-21"
-    },
-    {
-      "code": "021277",
-      "name": "广发全球精选股票(QDII)人民币C",
-      "old_limit": 10000.0,
-      "new_limit": 20000.0,
-      "change_date": "2026-10-21"
     }
   ]
 }
