@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T04:54:41.501439+00:00",
+  "generated_at": "2026-11-23T05:32:51.717461+00:00",
   "changes": [
     {
       "code": "007280",
@@ -742,34 +742,6 @@
       "old_limit": 100000000000.0,
       "new_limit": 0,
       "change_date": "2026-10-24"
-    },
-    {
-      "code": "001668",
-      "name": "汇添富全球移动互联混合(QDII)人民币A",
-      "old_limit": 500.0,
-      "new_limit": 0,
-      "change_date": "2026-10-23"
-    },
-    {
-      "code": "015202",
-      "name": "汇添富全球移动互联混合(QDII)人民币C",
-      "old_limit": 500.0,
-      "new_limit": 0,
-      "change_date": "2026-10-23"
-    },
-    {
-      "code": "020515",
-      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)A",
-      "old_limit": 500.0,
-      "new_limit": 0,
-      "change_date": "2026-10-23"
-    },
-    {
-      "code": "020516",
-      "name": "华泰柏瑞东南亚科技ETF发起式联接(QDII)C",
-      "old_limit": 500.0,
-      "new_limit": 0,
-      "change_date": "2026-10-23"
     }
   ]
 }
