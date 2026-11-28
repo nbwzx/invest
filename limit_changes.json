@@ -1,6 +1,48 @@
 {
-  "generated_at": "2026-11-27T06:31:31.507162+00:00",
+  "generated_at": "2026-11-28T06:07:22.469698+00:00",
   "changes": [
+    {
+      "code": "080006",
+      "name": "长盛环球行业混合(QDII)A",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-11-28"
+    },
+    {
+      "code": "008971",
+      "name": "大成纳斯达克100ETF联接(QDII)C",
+      "old_limit": 10.0,
+      "new_limit": 5.0,
+      "change_date": "2026-11-28"
+    },
+    {
+      "code": "000834",
+      "name": "大成纳斯达克100ETF联接(QDII)A",
+      "old_limit": 10.0,
+      "new_limit": 5.0,
+      "change_date": "2026-11-28"
+    },
+    {
+      "code": "017071",
+      "name": "申万菱信全球新能源股票型发起式(QDII)A",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-11-28"
+    },
+    {
+      "code": "017072",
+      "name": "申万菱信全球新能源股票型发起式(QDII)C",
+      "old_limit": 0,
+      "new_limit": 100000000000.0,
+      "change_date": "2026-11-28"
+    },
+    {
+      "code": "028491",
+      "name": "长盛环球行业混合(QDII)C",
+      "old_limit": 0,
+      "new_limit": 1000.0,
+      "change_date": "2026-11-28"
+    },
     {
       "code": "161620",
       "name": "融通核心价值混合A",
@@ -2443,13 +2485,6 @@
       "old_limit": 20000.0,
       "new_limit": 2000.0,
       "change_date": "2026-10-29"
-    },
-    {
-      "code": "519981",
-      "name": "长信标普100等权重指数人民币",
-      "old_limit": 100.0,
-      "new_limit": 500.0,
-      "change_date": "2026-10-28"
     }
   ]
 }
